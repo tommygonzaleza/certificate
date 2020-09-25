@@ -2,37 +2,40 @@ import { stylesDefault } from "../../auth/pdfStyles";
 import * as dayjs from 'dayjs';
 
 const Certificate = ({data}) => {
-
+    console.log(data)
     return (
-        <div style={stylesDefault.body}>
+        <div style={stylesDefault.body}  id={data.html}>
             <div id="header" style={stylesDefault.header}>
                 <p style={stylesDefault.certificate}>{data.strings["Certificate"].toUpperCase()}</p>
                 <p style={stylesDefault.program}>{data.strings["Program"].toUpperCase()}</p>
                 <p style={stylesDefault.fullStack}>{"</"}{data.strings["Full Stack Software Development"].toUpperCase()}{">"}</p>
             </div>
+            <div id="to" style={stylesDefault.to}>
+                <span style={stylesDefault.givenTo}>{data.strings["Recognizes that"]}:</span>
+            </div>
             <div id="name" style={stylesDefault.name} >
                 <span style={stylesDefault.firstName}>{"</"}{data.user.first_name}</span>
                 <span style={stylesDefault.lastName}> {data.user.last_name}{">"}</span>
             </div>
-            <div id="to" style={stylesDefault.to}>
-                <span style={stylesDefault.givenTo}>{data.strings["Recognizes that"]}:</span>
-            </div>
             <div id="completion" style={stylesDefault.completion}>
                 <p style={stylesDefault.completionDescription}>{data.strings["Has successfully completed the Full Stack Development program"]}</p>
-    <p style={stylesDefault.completionDescription}>{data.specialty.duration_in_hours} {data.strings["Hours"]}</p>
+                <p style={stylesDefault.completionDescription}>{data.specialty.duration_in_hours} {data.strings["Hours"]}</p>
                 <p style={stylesDefault.completionDescription}>{data.academy.name}</p>
                 <p style={stylesDefault.completionDescription}>{dayjs(data.created_at).locale(data.lang || "en").format("DD MMMM YYYY")}</p>
             </div>
             <div id="department" style={stylesDefault.department}>
                 <img alt="florida department of education logo"
                     src="https://www.fldoe.org/_resources/img/logo.png"
-                    width="250px"
-                    height="70px" />
+                    width="168px"
+                    height="48px" />
             </div>
             <div id="signature" style={stylesDefault.signature}>
                 <p style={stylesDefault.sign}>{data.signed_by}</p>
                 <p style={stylesDefault.signedBy}>{data.signed_by}</p>
                 <p style={stylesDefault.role}>{data.signed_by_role}</p>
+            </div>
+            <div id="verify" style={stylesDefault.verify}> 
+                <span style={stylesDefault.at}>Verify this certificate at https://certificate.breatheco.de/{data.token}</span>
             </div>
             <svg width="100%" height="100%" viewBox="0 0 842 595" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="842" height="595" fill="#E5E5E5" />

@@ -10,7 +10,7 @@ export const stylesDefault = {
         textAlign: "center"
     },
     certificate:{
-        fontSize:"50px", 
+        fontSize:"36px", 
         fontWeight:300, 
         fontFamily:"Lato, sans-serif",
         color:"white",
@@ -18,15 +18,15 @@ export const stylesDefault = {
         paddingTop:"10px"
     },
     program:{
-        fontSize:"28px", 
+        fontSize:"18px", 
         fontWeight:300, 
         fontFamily:"Lato, sans-serif",
         color:"white",
         margin:0,
-        marginBottom: "35px"
+        marginBottom: "20px"
     },
     fullStack:{
-        fontSize:"40px", 
+        fontSize:"21px", 
         fontWeight:700, 
         fontFamily:"Lato, sans-serif",
         color:"white",
@@ -40,32 +40,34 @@ export const stylesDefault = {
         width:"100%"
     },
     lastName:{
-        fontSize:"58px", 
+        fontSize:"36px", 
         fontWeight:300, 
         fontFamily:"Lato, sans-serif"
     },
     firstName:{
-        fontSize:"58px", 
+        fontSize:"36px", 
         fontWeight:700, 
         fontFamily:"Lato, sans-serif"
     },
     to:{
         position:"absolute", 
-        top:"55%", width:"100%", 
+        top:"55%", 
+        width:"100%", 
         textAlign:"center"
     },
     givenTo:{
-        fontSize:"30px", 
+        fontSize:"18px", 
         fontWeight:300, 
         fontFamily:"Lato, sans-serif"
     },
     completion:{
         position:"absolute", 
-        top:"67%", width:"100%", 
+        top:"67%", 
+        width:"100%", 
         textAlign:"center"
     },
     completionDescription:{
-        fontSize:"25px", 
+        fontSize:"18px", 
         fontWeight:300, 
         fontFamily:"Lato, sans-serif",
         margin:0
@@ -85,22 +87,33 @@ export const stylesDefault = {
         textAlign:"right"
     },
     signedBy:{
-        fontSize:"25px", 
+        fontSize:"18px", 
         fontWeight:300, 
         fontFamily:"Lato, sans-serif",
         margin:0,
-        marginLeft:"15px"
     },
     role:{
-        fontSize:"25px", 
+        fontSize:"18px", 
         fontWeight:400, 
         fontFamily:"Lato, sans-serif",
         margin:0,
-        marginRight:"55px"
+        marginRight:"30px"
     },
     sign:{
-        fontSize:"45px",
+        fontSize:"30px",
         fontFamily:"Mrs Saint Delafield, cursive",
+        margin:0,
+    },
+     verify:{
+        position:"absolute", 
+        top:"97%", 
+        width:"100%", 
+        textAlign:"center"
+    },
+    at:{
+        fontSize:"9px", 
+        fontWeight:300, 
+        fontFamily:"Lato, sans-serif",
         margin:0,
     }
 }
@@ -117,21 +130,21 @@ export const stylesModern = {
         textAlign: "center"
     },
     certificate:{
-        fontSize:"28px", 
+        fontSize:"18px", 
         fontWeight:300, 
         fontFamily:"Lato, sans-serif",
         color:"white",
         margin:0,
     },
     program:{
-        fontSize:"50px", 
+        fontSize:"32px", 
         fontWeight:300, 
         fontFamily:"Lato, sans-serif",
         color:"white",
         margin:0,
     },
     fullStack:{
-        fontSize:"30px", 
+        fontSize:"19px", 
         fontWeight:700, 
         fontFamily:"Lato, sans-serif",
         color:"white",
@@ -145,12 +158,12 @@ export const stylesModern = {
         width:"100%"
     },
     lastName:{
-        fontSize:"58px", 
+        fontSize:"36px", 
         fontWeight:300, 
         fontFamily:"Lato, sans-serif"
     },
     firstName:{
-        fontSize:"58px", 
+        fontSize:"36px", 
         fontWeight:700, 
         fontFamily:"Lato, sans-serif"
     },
@@ -161,7 +174,7 @@ export const stylesModern = {
         textAlign:"center"
     },
     givenTo:{
-        fontSize:"30px", 
+        fontSize:"18px", 
         fontWeight:300, 
         fontFamily:"Lato, sans-serif"
     },
@@ -171,7 +184,7 @@ export const stylesModern = {
         textAlign:"center"
     },
     completionDescription:{
-        fontSize:"25px", 
+        fontSize:"18px", 
         fontWeight:300, 
         fontFamily:"Lato, sans-serif",
         margin:0
@@ -191,24 +204,36 @@ export const stylesModern = {
         textAlign:"right"
     },
     signedBy:{
-        fontSize:"25px", 
+        fontSize:"18px", 
         fontWeight:300, 
         fontFamily:"Lato, sans-serif",
         margin:0,
-        marginLeft:"15px"
+        marginLeft:"5px"
     },
     role:{
-        fontSize:"25px", 
+        fontSize:"18px", 
         fontWeight:400, 
         fontFamily:"Lato, sans-serif",
         margin:0,
-        marginRight:"55px"
+        marginRight:"35px"
     },
     sign:{
-        fontSize:"45px",
+        fontSize:"30px",
         fontFamily:"Mrs Saint Delafield, cursive",
         margin:0,
-        marginTop:"10px",
         marginRight:"-40px"
+    },    
+    verify:{
+        position:"absolute", 
+        top:"97%", 
+        width:"100%", 
+        textAlign:"left",
+        marginLeft:"20px"
+    },
+    at:{
+        fontSize:"9px", 
+        fontWeight:300, 
+        fontFamily:"Lato, sans-serif",
+        margin:0,
     }
 }

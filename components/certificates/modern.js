@@ -2,19 +2,20 @@ import { stylesModern } from "../../auth/pdfStyles";
 import * as dayjs from 'dayjs';
 
 const Certificate = ({data}) => {
+    console.log(data)
     return (
-        <div style={stylesModern.body}>
+        <div style={stylesModern.body} id={data.html}>
             <div id="header" style={stylesModern.header}>
                 <p style={stylesModern.certificate}>{data.strings["Certificate"].toUpperCase()}</p>
                 <p style={stylesModern.program}>{data.strings["Program"].toUpperCase()}</p>
                 <p style={stylesModern.fullStack}>{"</"}{data.strings["Full Stack Software Development"].toUpperCase()}{">"}</p>
             </div>
+            <div id="to" style={stylesModern.to}>
+                <span style={stylesModern.givenTo}>{data.strings["Recognizes that"]}:</span>
+            </div>
             <div id="name" style={stylesModern.name} >
                 <span style={stylesModern.firstName}>{"</"}{data.user.first_name}</span>
                 <span style={stylesModern.lastName}> {data.user.last_name}{">"}</span>
-            </div>
-            <div id="to" style={stylesModern.to}>
-                <span style={stylesModern.givenTo}>{data.strings["Recognizes that"]}:</span>
             </div>
             <div id="completion" style={stylesModern.completion}>
                 <p style={stylesModern.completionDescription}>{data.strings["Has successfully completed the Full Stack Development program"]}</p>
@@ -25,13 +26,16 @@ const Certificate = ({data}) => {
             <div id="department" style={stylesModern.department}>
                 <img alt="florida department of education logo"
                     src="https://www.fldoe.org/_resources/img/logo.png"
-                    width="250px"
-                    height="70px" />
+                    width="168px"
+                    height="48px" />
             </div>
             <div id="signature" style={stylesModern.signature}>
                 <p style={stylesModern.sign}>{data.signed_by}</p>
                 <p style={stylesModern.signedBy}>{data.signed_by}</p>
                 <p style={stylesModern.role}>{data.signed_by_role}</p>
+            </div>
+            <div id="verify" style={stylesModern.verify}> 
+                <span style={stylesModern.at}>Verify this certificate at https://certificate.breatheco.de/{data.token}</span>
             </div>
             <svg width="100%" height="100%" viewBox="0 0 843 596" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="843" height="596" fill="#E5E5E5" />

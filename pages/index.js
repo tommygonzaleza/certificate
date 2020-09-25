@@ -1,23 +1,41 @@
 import React from "react"
-import { Button, Input } from "../components/UI/form";
-import { Container, Jumbo } from "../components/UI/layout";
+import { Input } from "../components/ui/form";
+import Button from "../components/ui/Button";
+import Router from "next/router";
+import {Alert} from "react-bootstrap";
 
 const IndexPage = () => {
-    const [token, setToken] = React.useState("")
-    return <Container>
-        <Jumbo>
-            <h1>Looking for a certificate?</h1>
-            <form onSubmit={(e) => {
-                e.preventDefault()
-                window.location.href="/pdf/"+token
-            }}>
-                <Input type="text" required onChange={(e) => setToken(e.target.value)} placeholder="Certificate token" />
-                <Button>Get certificate</Button>
-                <Button type="button" onClick={() => {
-                    if(token.length > 0)  window.location.href="/preview/"+token;
-                }}>Get HTML</Button>
+    const [token, setToken] = React.useState("");
+    const [to, setTo] = React.useState("");
+    const [notify, setNotify] = React.useState({msg: "", type: ""});
+    const [show, setShow] = React.useState(true);
+
+    const onSubmit = (e) =>{
+        e.preventDefault();
+        fetch("https://breathecode.herokuapp.com/v1/certificate/token/"+ token)
+        .then(res =>  res.json())
+        .then(data => {
+            if(token.length < 1 || data.status_code === 404 ) {
+            setNotify({msg:"Invalid Token or Certificate not found", type:"error"})
+            } else Router.push(`/${to}/${token}`)}
+        )
+        .catch(err => err)
+    }
+
+    return <div className="container">
+        <div className="row text-center">
+            <div className="col-12">
+                <h1>Looking for a certificate?</h1>
+            </div>
+            <div className="col-12">         
+            <form  className="d-flex" onSubmit={(e) => onSubmit(e)}>
+                <Input type="text" required onChange={(e) => setToken(e.target.value)} placeholder="Certificate token" className="mr-1 ml-auto"/>
+                <Button className="mr-1" type="submit" onClick={() => setTo("pdf")}>Get certificate</Button>
+                <Button  type="submit" onClick={() => setTo("preview")} className="mr-auto">Get HTML</Button>
             </form>
-        </Jumbo>
-    </Container>
+            </div>
+        </div>
+            {notify.type == "error" ? <Alert onClose={setTimeout(()=> setShow(false),3000)} show={show} variant={"danger"} className="shadow-one mt-4 alert-position">{notify.msg}</Alert> : ""}
+    </div>
 }
 export default IndexPage;

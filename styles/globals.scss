@@ -51,3 +51,20 @@ a {
       line-height: 25px;
   }
 }
+
+#body{
+    width: 100% !important;
+    height: 100% !important;
+}
+
+#html-body{
+    width: 1000px !important;
+    height: 100%;
+    position: relative;
+}
+
+.alert-position{
+    position: absolute !important;
+    top: 90%;
+    left: 40%;
+}
