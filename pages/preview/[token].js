@@ -38,7 +38,6 @@ const Preview = ({ data, query, token }) => {
                 <Alert variant={"danger"} className="shadow-one mt-4 d-flex">Ooops... Certificate not found or something went wrong , <Link to={"/"} >go to the home page.</Link></Alert>
             </div> 
         }
-        
         </>
     );
 }
@@ -49,6 +48,7 @@ export async function getServerSideProps(context) {
     const { token } = context.query
     const res = await fetch(`${HOST}/${token}`);
     const data = await res.json();
+    console.log(data);
     return {
         props: {
             data: data,

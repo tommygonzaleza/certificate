@@ -15,7 +15,7 @@ const Share = ({ user }) => {
     const router = useRouter();
     const { query } = router;
     const [data] = useState(user);
-    const [strings] = useState(translations[query.lang || "en"]);
+    const [strings,setStrings] = useState(translations[query.lang || "en"]);
     return (
         <>
             <Head>
@@ -129,7 +129,13 @@ const Share = ({ user }) => {
                         </div>
                     </div>
                 </div>
-                <LanguageSwitcher translations={["es", "en"]} current={query.lang} onClick={(lang) => router.push("/share/[token]?lang=es", `/share/${query.token}?lang=es`, { query: { lang: "es" } })} />
+                <LanguageSwitcher 
+                translations={["es", "en"]} 
+                current={query.lang} 
+                onClick={(lang) => {
+                    router.push("/share/[token]?lang="+ lang, `/share/${query.token}?lang=${lang}`, { query: { lang: lang } })
+                    setStrings(translations[lang])
+                    }} />
             </div>
         </>
     )
