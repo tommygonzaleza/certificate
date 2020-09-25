@@ -19,6 +19,16 @@ const Share = ({ user }) => {
     return (
         <>
             <Head>
+                <title>{"4Geeks Academy's Student Certificate"}</title>
+                <meta property="og:title" content="4Geeks Academy's Students Certificates" />
+                <meta property="og:description" content="Certificates verification of 4Geeks Academy Students" />
+                <meta property="og:image" content={""}/>
+                <meta property="og:url" content={"https://3000-d75afd03-4f32-4ac8-9fad-5975175bd685.ws-us02.gitpod.io/share/5a1f9e351a81664169194bea10a6813d121a5c54"} />
+                <meta name="twitter:title" content={"4Geeks Academy's Student Certificate"} />
+                <meta name="twitter:description" content={"Certificates verification of 4Geeks Academy Students"} />
+                <meta name="twitter:image" content={"../public/test.png"} />
+                <meta name="twitter:image:alt" content="Alt text for image" />
+                <meta name="twitter:site" content="@4geeksacademy" />
                 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
                 <link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&display=swap" rel="stylesheet" />
             </Head>

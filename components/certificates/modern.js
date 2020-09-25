@@ -2,7 +2,6 @@ import { stylesModern } from "../../auth/pdfStyles";
 import * as dayjs from 'dayjs';
 
 const Certificate = ({data}) => {
-    console.log(data)
     return (
         <div style={stylesModern.body} id={data.html}>
             <div id="header" style={stylesModern.header}>
@@ -89,7 +88,7 @@ const Certificate = ({data}) => {
                         <path id="Vector_19" d="M158.325 149.847H158.349L159.978 144.607H160.809L158.19 152.421C158.034 152.899 157.833 153.281 157.589 153.568C157.346 153.856 156.996 154 156.541 154C156.308 154 156.08 153.972 155.855 153.919L155.932 153.096C156.112 153.168 156.3 153.203 156.496 153.203C156.758 153.203 156.962 153.109 157.113 152.918C157.264 152.727 157.393 152.455 157.507 152.102L157.933 150.801L155.685 144.607H156.541L158.325 149.847Z" fill="white" />
                     </g>
                     <g id="Group 5">
-                        <path id="path508" d="M343 518H498.492" stroke="#11100E" stroke-width="1.22133" stroke-miterlimit="10" />
+                        <path id="path508" d="M343 518H498.492" stroke="#11100E" strokeWidth="1.22133" strokeMiterlimit="10" />
                     </g>
                 </g>
                 <defs>
