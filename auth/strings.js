@@ -18,6 +18,8 @@
     "Issuer":"Issuer",
     "website":"website",
     "Total Hours":"Total Hours",
+    "Certificate of":"Certificate of",
+    "to":"to",
     'This document certifies that the student is a Full Stack Web Developer,with proficient knowlege to help in the creation of web applications using HTML/CSS,Javascript, React and REST API using SQL, Python and the Flask Framework':'This document certifies that the student is a Full Stack Web developer,with proficient knowlege to help in the creation of web applications using HTML/CSS,Javascript, React and REST API using SQL, Python and the Flask Framework'
 }
 let es = {
@@ -34,6 +36,8 @@ let es = {
     "Download PDF":"Descargar PDF",
     "Issuer":"Emisor",
     "website":"pagina web",
+    "Certificate of":"Certificado de",
+    "to":"para",
     "Total Hours":"Horas Totales",
     "Share on LinkedIn":"Compartir en LinkedIn",
     "and it does not expires":"y no tiene fecha de expiración",

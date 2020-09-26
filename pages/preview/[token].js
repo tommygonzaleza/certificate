@@ -35,20 +35,17 @@ const Preview = ({ data, query, token }) => {
         }}
         />}</>):
             <div className="container">
-                <Alert variant={"danger"} className="shadow-one mt-4 d-flex">Ooops... Certificate not found or something went wrong , <Link to={"/"} >go to the home page.</Link></Alert>
+                <Alert variant={"danger"} className="shadow-one mt-4 d-flex">Ooops... Certificate not found or something went wrong , <Link to={"/find"} >go to the find page.</Link></Alert>
             </div> 
         }
         </>
     );
 }
 
-const HOST = "https://breathecode.herokuapp.com/v1/certificate/token";
-
 export async function getServerSideProps(context) {
     const { token } = context.query
-    const res = await fetch(`${HOST}/${token}`);
+    const res = await fetch(`${process.env.BC_HOST}/${token}`);
     const data = await res.json();
-    console.log(data);
     return {
         props: {
             data: data,

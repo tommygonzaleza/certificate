@@ -1,34 +1,40 @@
-import React, { useState } from "react";
-import Button from "../../components/ui/Button";
-import Icon from "../../components/ui/Icon";
-import SLink from "../../components/ui/Link";
+import React, { useState, useEffect } from "react";
+import Button from "../components/ui/Button";
+import Icon from "../components/ui/Icon";
+import SLink from "../components/ui/Link";
 import * as dayjs from 'dayjs';
 import { useRouter } from 'next/router';
-import LanguageSwitcher from "../../components/ui/LaguageSwitcher";
-import translations from "../../auth/strings";
-import ModernCertificate from "../../components/certificates/modern";
-import DefaultCertificate from "../../components/certificates/default";
+import LanguageSwitcher from "../components/ui/LaguageSwitcher";
+import translations from "../auth/strings";
+import ModernCertificate from "../components/certificates/modern";
+import DefaultCertificate from "../components/certificates/default";
 import Link from "next/link";
 import Head from "next/head";
+import {Alert} from "react-bootstrap";
 
-const Share = ({ user }) => {
+const Share = ({ cert }) => {
     const router = useRouter();
     const { query } = router;
-    const [data] = useState(user);
     const [strings,setStrings] = useState(translations[query.lang || "en"]);
+    const [path, setPath] = useState("")
+    useEffect(() => {
+        setPath(window.location.href);
+    },[])
     return (
         <>
+        
+        {(query.token !== "" && !cert.status_code) ? <>
             <Head>
-                <title>{"4Geeks Academy's Student Certificate"}</title>
-                <meta property="og:title" content="4Geeks Academy's Students Certificates" />
-                <meta property="og:description" content="Certificates verification of 4Geeks Academy Students" />
-                <meta property="og:image" content={""}/>
-                <meta property="og:url" content={"https://3000-d75afd03-4f32-4ac8-9fad-5975175bd685.ws-us02.gitpod.io/share/5a1f9e351a81664169194bea10a6813d121a5c54"} />
-                <meta name="twitter:title" content={"4Geeks Academy's Student Certificate"} />
-                <meta name="twitter:description" content={"Certificates verification of 4Geeks Academy Students"} />
-                <meta name="twitter:image" content={"../public/test.png"} />
-                <meta name="twitter:image:alt" content="Alt text for image" />
-                <meta name="twitter:site" content="@4geeksacademy" />
+                <title>{"4Geeks Academy's Student cert"}</title>
+                <meta property="og:title" content={`${strings["Certificate of"]} ${cert.specialty.name} ${strings["to"]} ${cert.user.first_name} ${cert.user.last_name}`} />
+                <meta property="og:description" content={cert.specialty.description} />
+                <meta property="og:image" content={cert.preview_url}/>
+                <meta property="og:url" content={path} />
+                <meta name="twitter:title" content={`${strings["Certificate of"]} ${cert.specialty.name} ${strings["to"]} ${cert.user.first_name} ${cert.user.last_name}`} />
+                <meta name="twitter:description" content={cert.specialty.description} />
+                <meta name="twitter:image" content={cert.preview_url} />
+                <meta name="twitter:image:alt" content={`${strings["Certificate of"]} ${cert.specialty.name} ${strings["to"]} ${cert.user.first_name} ${cert.user.last_name}`} />
+                <meta name="twitter:site" content={cert.academy.twitter} />
                 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
                 <link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&display=swap" rel="stylesheet" />
             </Head>
@@ -36,14 +42,14 @@ const Share = ({ user }) => {
                 <div className="row">
                     <div className="col-12 bg-dark">
                         {
-                            query.style === "modern" ? <ModernCertificate data={{
-                                ...data,
+                            cert.layout === "modern" ? <ModernCertificate data={{
+                                ...cert,
                                 token: query.token,
                                 lang: query.lang || "en",
                                 strings: translations[query.lang || "en"],
                                 html: "html-body"
                             }} /> : <DefaultCertificate data={{
-                                ...data,
+                                ...cert,
                                 token: query.LanguageSwitchertoken,
                                 lang: query.lang || "en",
                                 strings: translations[query.lang || "en"],
@@ -57,7 +63,11 @@ const Share = ({ user }) => {
                         <div className="col-md-4 col-12">
                             <div className="row pb-2">
                                 <div className="col-12">
-                                    <Button className="w-100" icon="arrow" variant="primary">
+                                    <Button className="w-100" 
+                                            icon="arrow" 
+                                            variant="primary" 
+                                            href={`https://www.linkedin.com/sharing/share-offsite/?url=${path}`} 
+                                            target={"_blank"}>
                                         <img src="https://www.flaticon.es/svg/static/icons/svg/174/174857.svg" />
                                         <Button.Label>{strings["Share on LinkedIn"]}</Button.Label>
                                     </Button>
@@ -65,7 +75,7 @@ const Share = ({ user }) => {
                             </div>
                             <div className="row pb-2">
                                 <div className="col-12">
-                                    <Button className="w-100" icon="arrow" variant="primary" to={`/pdf/${query.token}`}>
+                                    <Button className="w-100" icon="arrow" variant="primary" to={`/pdf/${query.token}`} target={"_blank"}>
                                         <img src="https://www.flaticon.es/svg/static/icons/svg/617/617526.svg" />
                                         <Button.Label >{strings["Download PDF"]}</Button.Label>
                                     </Button>
@@ -74,9 +84,9 @@ const Share = ({ user }) => {
                             <div className="row pb-2">
                                 <div className="col-12">
                                     <div className="card shadow-one mb-3 d-flex" >
-                                        <img src="https://www.flaticon.es/svg/static/icons/svg/74/74472.svg" width="40px" height="40px" className="mr-3" />
+                                        <img src={cert.user.avatar_url || "https://www.flaticon.es/svg/static/icons/svg/74/74472.svg"} width="40px" height="40px" className="mr-3" />
                                         <div>
-                                            <p>{data && data.user.first_name + " " + data.user.last_name}</p>
+                                            <p>{cert && cert.user.first_name + " " + cert.user.last_name}</p>
                                             <SLink href="/#" >{strings["view all certificates"]}</SLink>
                                         </div>
                                     </div>
@@ -87,8 +97,8 @@ const Share = ({ user }) => {
                                     <div className="card shadow-one mb-3" >
                                         <div className="card-body">
                                             <h5 className="card-title">{strings["Issuer"]}</h5>
-                                            <p>{data && data.academy.name}</p>
-                                            <SLink href="https://www.4geeksacademy.co/">{strings["website"]}</SLink>
+                                            <p>{cert && cert.academy.name}</p>
+                                            <SLink href={cert.academy.url || "https://4geeksacademy.co/"}>{strings["website"]}</SLink>
                                         </div>
                                     </div>
                                 </div>
@@ -109,21 +119,21 @@ const Share = ({ user }) => {
                             <div className="row pb-4">
                                 <div className="col-sm-12 col-12 ">
                                     <h1>{strings["Full Stack Web Development"]}</h1>
-                                    <p>{strings["This document certifies that the student is a Full stack web developer,with proficient knowlege to help in the creation of web applications using HTML/CSS,Javascript, React and REST API using SQL, Python and the Flask Framework"]}</p>
+                                    <p>{strings["This document certifies that the student is a Full Stack Web Developer,with proficient knowlege to help in the creation of web applications using HTML/CSS,Javascript, React and REST API using SQL, Python and the Flask Framework"]}</p>
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-sm-4 col-4 ">
                                     <h4>{strings["Total Hours"]}</h4>
-                                    <p>{data && data.specialty.duration_in_hours}{strings["Hours"]}</p>
+                                    <p>{cert && cert.specialty.duration_in_hours}{strings["Hours"]}</p>
                                 </div>
                                 <div className="col-md-4-12 col-4 ">
                                     <h4>{strings["Issued On"]}</h4>
-                                    <p>{data && dayjs(data.created_at).locale(query.lang || "en").format("DD MMMM YYYY")}</p>
+                                    <p>{cert && dayjs(cert.created_at).locale(query.lang || "en").format("DD MMMM YYYY")}</p>
                                 </div>
                                 <div className="col-sm-4d col-4 ">
                                     <h4>{strings["Expired On"]}</h4>
-                                    <p>{strings["Does not expire"]}</p>
+                                    <p>{cert && cert.expires_at == null ? strings["Does not expire"] : dayjs(cert.expires_at).locale(query.lang || "en").format("DD MMMM YYYY")}</p>
                                 </div>
                             </div>
                         </div>
@@ -133,24 +143,24 @@ const Share = ({ user }) => {
                 translations={["es", "en"]} 
                 current={query.lang} 
                 onClick={(lang) => {
-                    router.push("/share/[token]?lang="+ lang, `/share/${query.token}?lang=${lang}`, { query: { lang: lang } })
+                    router.push("/[token]?lang="+ lang, `/${query.token}?lang=${lang}`, { query: { lang: lang } })
                     setStrings(translations[lang])
                     }} />
             </div>
+            </>: <div className="container">
+                <Alert variant={"danger"} className="shadow-one mt-4 d-flex">Ooops... Certificate not found or something went wrong , <SLink to={"/find"} >go to the find page.</SLink></Alert>
+            </div> }
         </>
     )
 }
 
-const HOST = "https://breathecode.herokuapp.com/v1/certificate/token";
-
-
 export async function getServerSideProps(context) {
     const { token } = context.query
-    const res = await fetch(`${HOST}/${token}`);
-    const data = await res.json();
+    const res = await fetch(`${process.env.BC_HOST}/${token}`);
+    const cert = await res.json();
     return {
         props: {
-            user: data
+            cert
         }
     }
 }

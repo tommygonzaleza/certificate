@@ -5,18 +5,23 @@ import Icon from "../Icon/index";
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 
-const SmartButton = ({ children, variant, onClick, icon, to, className,onHover, ...rest }) => {
+const SmartButton = ({ children, variant, onClick, icon, to, className,onHover,target,href, ...rest }) => {
      
      return(
          <>
              {
                  to ?
                       <Link href={to}>
-                          <a className={`${!onHover ? "": "btn-outline-" + variant} shadow-one btn ${className}`} {...rest}>
+                          <a className={`${!onHover ? "": "btn-outline-" + variant} shadow-one btn ${className}`} {...rest} target={target !== ""? target : ""}>
                               {children}
                               {icon ? <Icon name={icon} size='md' /> : ""}
                           </a>
-                      </Link>
+                      </Link> :
+                href ? 
+                      <a className={`${!onHover ? "": "btn-outline-" + variant} shadow-one btn ${className}`} href={href} {...rest} target={target !== ""? target : ""}>
+                              {children}
+                              {icon ? <Icon name={icon} size='md' /> : ""}
+                      </a>
                    :
                 <Button variant={`${!onHover ? "": "outline-" + variant} shadow-one btn ${className}`} onClick={onClick} {...rest}>
                     {children}
@@ -39,7 +44,8 @@ SmartButton.propTypes = {
     icon: PropTypes.string,
     to: PropTypes.string,
     className: PropTypes.string,
-    onHover: PropTypes.bool
+    onHover: PropTypes.bool,
+    target:PropTypes.string
 };
 
 SmartButton.defaultProps = {
@@ -48,7 +54,8 @@ SmartButton.defaultProps = {
     icon: null,
     to:null,
     className: "",
-    onHover: true
+    onHover: true,
+    target:""
 };
 
 export default SmartButton;

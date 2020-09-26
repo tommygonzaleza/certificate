@@ -1,10 +1,10 @@
-import React from "react"
-import { Input } from "../components/ui/form";
-import Button from "../components/ui/Button";
+import React, { useEffect } from "react"
+import { Input } from "../../components/ui/form";
+import Button from "../../components/ui/Button";
 import Router from "next/router";
 import {Alert} from "react-bootstrap";
 
-const IndexPage = () => {
+const Find = () => {
     const [token, setToken] = React.useState("");
     const [to, setTo] = React.useState("");
     const [notify, setNotify] = React.useState({msg: "", type: ""});
@@ -12,7 +12,7 @@ const IndexPage = () => {
 
     const onSubmit = (e) =>{
         e.preventDefault();
-        fetch("https://breathecode.herokuapp.com/v1/certificate/token/"+ token)
+        fetch(`${process.env.BC_HOST}/${token}`)
         .then(res =>  res.json())
         .then(data => {
             if(token.length < 1 || data.status_code === 404 ) {
@@ -38,4 +38,4 @@ const IndexPage = () => {
             {notify.type == "error" ? <Alert onClose={setTimeout(()=> setShow(false),3000)} show={show} variant={"danger"} className="shadow-one mt-4 alert-position">{notify.msg}</Alert> : ""}
     </div>
 }
-export default IndexPage;
+export default Find;

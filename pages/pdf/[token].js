@@ -20,7 +20,7 @@ const HOST = "https://breathecode.herokuapp.com/v1/certificate/token";
 export const getServerSideProps = async (context) => {
     const { res, query } = context;
     const token = query.token;
-    const response = await fetch(`${HOST}/${token}`);
+    const response = await fetch(`${process.env.BC_HOST}/${token}`);
     const data = await response.json();
     if (token !== "" && !data.status_code) {
         const buffer = await pdfHelper.componentToPDFBuffer(
