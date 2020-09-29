@@ -47,7 +47,7 @@ export const getServerSideProps = async (context) => {
             res.end(buffer);
         }
         catch(error){
-            console.log("Error generating PDF", buffer)
+            console.log("Error generating PDF", error)
             return <p>Error: {error.message || error}</p>
         }
     }
