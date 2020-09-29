@@ -6,8 +6,6 @@ import * as dayjs from 'dayjs';
 import { useRouter } from 'next/router';
 import LanguageSwitcher from "../components/ui/LaguageSwitcher";
 import translations from "../auth/strings";
-import ModernCertificate from "../components/certificates/modern";
-import DefaultCertificate from "../components/certificates/default";
 import Link from "next/link";
 import Head from "next/head";
 import {Alert} from "react-bootstrap";
