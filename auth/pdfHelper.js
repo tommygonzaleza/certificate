@@ -7,8 +7,9 @@ const componentToPDFBuffer = (component) => {
     const html = renderToStaticMarkup(component);
 
     const options = {
-        //./node_modules/phantomjs/bin/phantomjs
-        phantomPath: "./node_modules/phantomjs/bin/phantomjs",
+// did not work ->        phantomPath: phantomjs.path,
+// did not work ->       phantomPath: './node_modules/phantomjs/bin/phantomjs',
+        phantomPath: '/vercel/workpath0/node_modules/phantomjs-prebuilt/lib/phantom/phantomjs',
         format: 'A4',
         orientation: 'landscape',
         type: 'pdf',
