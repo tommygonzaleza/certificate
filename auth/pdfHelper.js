@@ -1,4 +1,4 @@
-import { renderToStaticMarkup } from 'react-dom/server';
+/* import { renderToStaticMarkup } from 'react-dom/server';
 import phantomjs from 'phantomjs';
 import pdf from 'html-pdf';
 
@@ -37,4 +37,4 @@ await browser.close();
 };
 export default {
   componentToPDFBuffer
-};
+}; */
