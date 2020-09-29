@@ -1,28 +1,19 @@
-import { renderToStaticMarkup } from 'react-dom/server';
-import pdf from 'html-pdf';
-
-const componentToPDFBuffer = (component) => {
-  return new Promise((resolve, reject) => {
-    const html = renderToStaticMarkup(component);
-
-    const options = {
-      format: 'A4',
-      orientation: 'landscape',
-      type: 'pdf',
-      timeout: 30000, 
-      phantomPath:"/usr/local/bin/phantomjs"
-    };
-
-    const buffer = pdf.create(html, options).toBuffer((err, buffer) => {
-      if (err) {
-        return reject(err);
-        }
-    
-        return resolve(buffer);
-    });
+import { renderToStaticMarkup } from "react-dom/server";
+import puppeteer from "puppeteer";
+const componentToPDFBuffer = async component => {
+  const html = renderToStaticMarkup(component);
+  const browser = await puppeteer.launch({
+    headless: true,
+    args: ['—no-sandbox', '—disable-setuid-sandbox']
   });
-}
-
+  const page = await browser.newPage();
+  await page.setContent(html, { waitUntil: 'networkidle0', timeout: 30000 });
+  const pdf = await page.pdf({
+    format: 'A4',
+  });
+await browser.close();
+  return pdf;
+};
 export default {
   componentToPDFBuffer
-}
+};
