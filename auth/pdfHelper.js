@@ -9,7 +9,7 @@ const componentToPDFBuffer = (component) => {
     const options = {
 // did not work ->        phantomPath: phantomjs.path,
 // did not work ->       phantomPath: './node_modules/phantomjs/bin/phantomjs',
-        phantomPath: '/vercel/workpath0/node_modules/phantomjs-prebuilt/lib/phantom/phantomjs',
+        phantomPath: '/vercel/workpath0/node_modules/phantomjs-prebuilt/lib/phantom/bin/phantomjs',
         format: 'A4',
         orientation: 'landscape',
         type: 'pdf',
