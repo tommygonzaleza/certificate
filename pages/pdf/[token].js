@@ -23,27 +23,33 @@ export const getServerSideProps = async (context) => {
     const response = await fetch(`${process.env.BC_HOST}/${token}`);
     const data = await response.json();
     if (token !== "" && !data.status_code) {
-        const buffer = await pdfHelper.componentToPDFBuffer(
-            <PDFLayout lang={query.lang} token={token}>
-                {query.style === "modern" ? <ModernCertificate data={{
-                    ...data,
-                    token: token,
-                    lang: query.lang || "en",
-                    strings: strings[query.lang || "en"]
-                }}
-                /> : <DefaultCertificate data={{
-                    ...data,
-                    token: token,
-                    lang: query.lang || "en",
-                    strings: strings[query.lang || "en"]
-                }}
-                    />}
-            </PDFLayout>
-        );
-        // with this header,the browser will open the pdf directly      
-        res.setHeader('Content-Type', 'application/pdf');
-        // output the pdf buffer. once res.end is triggered, it won't trigger the render method
-        res.end(buffer);
+        try{
+            const buffer = await pdfHelper.componentToPDFBuffer(
+                <PDFLayout lang={query.lang} token={token}>
+                    {query.style === "modern" ? <ModernCertificate data={{
+                        ...data,
+                        token: token,
+                        lang: query.lang || "en",
+                        strings: strings[query.lang || "en"]
+                    }}
+                    /> : <DefaultCertificate data={{
+                        ...data,
+                        token: token,
+                        lang: query.lang || "en",
+                        strings: strings[query.lang || "en"]
+                    }}
+                        />}
+                </PDFLayout>
+            );
+            // with this header,the browser will open the pdf directly      
+            res.setHeader('Content-Type', 'application/pdf');
+            // output the pdf buffer. once res.end is triggered, it won't trigger the render method
+            res.end(buffer);
+        }
+        catch(error){
+            console.log("Error generating PDF", buffer)
+            return <p>Error: {error.message || error}</p>
+        }
     }
     return {
         props: {
