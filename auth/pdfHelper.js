@@ -8,7 +8,7 @@ const componentToPDFBuffer = (component) => {
 
     const options = {
         //./node_modules/phantomjs/bin/phantomjs
-        phantomPath: phantomjs.path,
+        phantomPath: "./node_modules/phantomjs/bin/phantomjs",
         format: 'A4',
         orientation: 'landscape',
         type: 'pdf',
