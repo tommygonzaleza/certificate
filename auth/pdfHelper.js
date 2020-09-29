@@ -1,4 +1,5 @@
 import { renderToStaticMarkup } from 'react-dom/server';
+import phantomjs from 'phantomjs';
 import pdf from 'html-pdf';
 
 const componentToPDFBuffer = (component) => {
@@ -6,10 +7,11 @@ const componentToPDFBuffer = (component) => {
     const html = renderToStaticMarkup(component);
 
     const options = {
-      format: 'A4',
-      orientation: 'landscape',
-      type: 'pdf',
-      timeout: 30000,
+        phantomPath: phantomjs.path,
+        format: 'A4',
+        orientation: 'landscape',
+        type: 'pdf',
+        timeout: 30000,
     };
 
     const _buffer = pdf.create(html, options).toBuffer((err, buffer) => {
