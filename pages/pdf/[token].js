@@ -1,55 +1,61 @@
-import React from 'react';
-import ModernCertificate from "../../components/certificates/modern";
-import DefaultCertificate from "../../components/certificates/default";
-import PDFLayout from '../../components/PDFLayout';
-import pdfHelper from '../../auth/pdfHelper';
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router'
 import strings from "../../auth/strings";
 import { Alert } from 'react-bootstrap';
 import Link from "../../components/ui/Link";
+import dynamic from 'next/dynamic';
 
-const Pdf = () => {
+const Default = dynamic(
+  () => import('../../components/diplomas/default'),
+  { ssr: false }
+);
+
+const Modern = dynamic(
+  () => import('../../components/diplomas/modern'),
+  { ssr: false }
+);
+const Pdf = ({data,token,query}) => {
     return <>
-            <div className="container">
-                <Alert variant={"danger"} className="shadow-one mt-4 d-flex">Ooops... Certificate not found or something went wrong , <Link to={"/"} >go to the home page.</Link></Alert>
-            </div>
+            { data && data.layout === "modern" ?
+            <Modern
+                 student={data.user}
+                 specialty={data.specialty}
+                 academy={data.academy}
+                 cohort={data.cohort}
+                 signed_by={data.signed_by}
+                 signed_by_role={data.signed_by_role}
+                 strings={strings[query.lang || "en"]}
+                 token={token}
+                 lang={query.lang}
+                 created_at={data.created_at}
+                 /> :
+                <Default 
+                 student={data.user}
+                 specialty={data.specialty}
+                 academy={data.academy}
+                 cohort={data.cohort}
+                 signed_by={data.signed_by}
+                 signed_by_role={data.signed_by_role}
+                 strings={strings[query.lang || "en"]}
+                 token={token}
+                 lang={query.lang}
+                 created_at={data.created_at}
+                 />
+            }
           </>
 }
 
-const HOST = "https://breathecode.herokuapp.com/v1/certificate/token";
-
-export const getServerSideProps = async (context) => {
-    const { res, query } = context;
-    const token = query.token;
-    const response = await fetch(`${process.env.BC_HOST}/${token}`);
-    const data = await response.json();
-    if (token !== "" && !data.status_code) {
-        const buffer = await pdfHelper.componentToPDFBuffer(
-            <PDFLayout lang={query.lang} token={token}>
-                {query.style === "modern" ? <ModernCertificate data={{
-                    ...data,
-                    token: token,
-                    lang: query.lang || "en",
-                    strings: strings[query.lang || "en"]
-                }}
-                /> : <DefaultCertificate data={{
-                    ...data,
-                    token: token,
-                    lang: query.lang || "en",
-                    strings: strings[query.lang || "en"]
-                }}
-                    />}
-            </PDFLayout>
-        );
-        // with this header,the browser will open the pdf directly     
-        res.setHeader('Content-Type', 'application/pdf');
-        // output the pdf buffer. once res.end is triggered, it won't trigger the render method
-        res.end(buffer);
-    }
+export async function getServerSideProps(context) {
+    const { token } = context.query
+    const res = await fetch(`${process.env.BC_HOST}/${token}`);
+    const data = await res.json();
     return {
         props: {
-            data: data
+            data: data,
+            token: token,
+            query: context.query
         }
-    };
+    }
 }
 
 export default Pdf;

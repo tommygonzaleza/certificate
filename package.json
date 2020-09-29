@@ -11,6 +11,8 @@
     "html-pdf": false
   },
   "dependencies": {
+    "@react-pdf/renderer": "^1.6.11",
+    "@react-pdf/styled-components": "^1.4.0",
     "bootstrap": "^4.5.2",
     "dayjs": "^1.8.36",
     "html-pdf": "^2.2.0",

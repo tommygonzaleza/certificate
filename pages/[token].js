@@ -11,6 +11,17 @@ import DefaultCertificate from "../components/certificates/default";
 import Link from "next/link";
 import Head from "next/head";
 import {Alert} from "react-bootstrap";
+import dynamic from 'next/dynamic';
+
+const Default = dynamic(
+  () => import('../components/diplomas/default'),
+  { ssr: false }
+);
+
+const Modern = dynamic(
+  () => import('../components/diplomas/modern'),
+  { ssr: false }
+);
 
 const Share = ({ cert }) => {
     const router = useRouter();
@@ -42,20 +53,30 @@ const Share = ({ cert }) => {
                 <div className="row">
                     <div className="col-12 bg-dark">
                         {
-                            cert.layout === "modern" ? <ModernCertificate data={{
-                                ...cert,
-                                token: query.token,
-                                lang: query.lang || "en",
-                                strings: translations[query.lang || "en"],
-                                html: "html-body"
-                            }} /> : <DefaultCertificate data={{
-                                ...cert,
-                                token: query.LanguageSwitchertoken,
-                                lang: query.lang || "en",
-                                strings: translations[query.lang || "en"],
-                                html: "html-body"
-                            }}
-                                />}
+                            cert.layout === "modern" ? <Modern
+                 student={cert.user}
+                 specialty={cert.specialty}
+                 academy={cert.academy}
+                 cohort={cert.cohort}
+                 signed_by={cert.signed_by}
+                 signed_by_role={cert.signed_by_role}
+                 strings={translations[query.lang || "en"]}
+                 token={query.token}
+                 lang={query.lang}
+                 created_at={cert.created_at}
+                 /> :
+                <Default 
+                 student={cert.user}
+                 specialty={cert.specialty}
+                 academy={cert.academy}
+                 cohort={cert.cohort}
+                 signed_by={cert.signed_by}
+                 signed_by_role={cert.signed_by_role}
+                 strings={translations[query.lang || "en"]}
+                 token={query.token}
+                 lang={query.lang}
+                 created_at={cert.created_at}
+                 />}
                     </div>
                 </div>
                 <div className="container">
