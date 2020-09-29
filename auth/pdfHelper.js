@@ -9,6 +9,7 @@ const componentToPDFBuffer = (component) => {
       format: 'A4',
       orientation: 'landscape',
       type: 'pdf',
+      timeout: 30000, 
       phantomPath:"./node_modules/phantomjs-prebuilt/bin/phantomjs"
     };
 
