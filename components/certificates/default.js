@@ -24,7 +24,7 @@ const Certificate = ({data}) => {
             </div>
             <div id="department" style={stylesDefault.department}>
                 <img alt="florida department of education logo"
-                    src="https://www.fldoe.org/_resources/img/logo.png"
+                    src="https://storage.googleapis.com/certificates-breathecode/assets/fdoe.png"
                     width="168px"
                     height="48px" />
             </div>
