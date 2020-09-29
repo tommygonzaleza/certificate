@@ -7,6 +7,7 @@ const componentToPDFBuffer = (component) => {
     const html = renderToStaticMarkup(component);
 
     const options = {
+        //./node_modules/phantomjs/bin/phantomjs
         phantomPath: phantomjs.path,
         format: 'A4',
         orientation: 'landscape',
@@ -16,6 +17,8 @@ const componentToPDFBuffer = (component) => {
 
     const _buffer = pdf.create(html, options).toBuffer((err, buffer) => {
         if (err) {
+            console.log("buffer", buffer);
+            console.log("phantomjs.path", phantomjs.path);
             console.log("Error creating PDF", err);
             return reject(err);
         }
