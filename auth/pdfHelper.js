@@ -10,7 +10,7 @@ const componentToPDFBuffer = (component) => {
       orientation: 'landscape',
       type: 'pdf',
       timeout: 30000, 
-      phantomPath:"./node_modules/phantomjs-prebuilt/bin/phantomjs"
+      phantomPath:"/usr/local/bin/phantomjs"
     };
 
     const buffer = pdf.create(html, options).toBuffer((err, buffer) => {
