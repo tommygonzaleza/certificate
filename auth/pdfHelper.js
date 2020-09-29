@@ -9,7 +9,6 @@ const componentToPDFBuffer = (component) => {
       format: 'A4',
       orientation: 'landscape',
       type: 'pdf',
-      timeout: 30000,
     };
 
     const buffer = pdf.create(html, options).toBuffer((err, buffer) => {
