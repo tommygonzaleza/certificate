@@ -169,7 +169,7 @@ const Share = ({ cert }) => {
                     }} />
             </div>
             </>: <div className="container">
-                <Alert variant={"danger"} className="shadow-one mt-4 d-flex">Ooops... Certificate not found or something went wrong , <SLink to={"/find"} >go to the find page.</SLink></Alert>
+                <Alert variant={"danger"} className="shadow-one mt-4 d-flex">Ooops... Certificate not found or something went wrong , <SLink to={"/find"} > go to the find page.</SLink></Alert>
             </div> }
         </>
     )

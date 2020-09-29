@@ -16,7 +16,10 @@ const Modern = dynamic(
 );
 const Pdf = ({data,token,query}) => {
     return <>
-            { data && data.layout === "modern" ?
+            {data && data.status_code ?             
+            <div className="container">
+                <Alert variant={"danger"} className="shadow-one mt-4 d-flex">Ooops... Certificate not found or something went wrong , <Link to={"/find"} > go to the find page.</Link></Alert>
+            </div>: data.layout === "modern" ?
             <Modern
                  student={data.user}
                  specialty={data.specialty}
