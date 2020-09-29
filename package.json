@@ -7,6 +7,9 @@
     "build": "next build",
     "start": "next start"
   },
+  "browser": {
+  "html-pdf": false
+},
   "dependencies": {
     "bootstrap": "^4.5.2",
     "dayjs": "^1.8.36",
