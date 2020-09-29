@@ -46,7 +46,11 @@ export const getServerSideProps = async (context) => {
         }
         catch(error){
             console.log("Error generating PDF", error)
-            return <p>Error: {error.message || error}</p>
+            return {
+                props: {
+                    data: error.message || error
+                }
+            }
         }
     }
     return {
