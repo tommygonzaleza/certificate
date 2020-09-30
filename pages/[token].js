@@ -10,17 +10,7 @@ import translations from "../auth/strings";
 import Link from "next/link";
 import Head from "next/head";
 import {Alert} from "react-bootstrap";
-import dynamic from 'next/dynamic';
 
-const Default = dynamic(
-  () => import('../components/diplomas/default'),
-  { ssr: false }
-);
-
-const Modern = dynamic(
-  () => import('../components/diplomas/modern'),
-  { ssr: false }
-);
 
 const Share = ({ cert }) => {
     const router = useRouter();
@@ -56,7 +46,7 @@ const Share = ({ cert }) => {
                 </div>
                 <div className="container">
                     <div className="row pt-4 pb-4">
-                        <div className="col-md-auto text-center">
+                        <div className="col-md-auto">
                             <div className="row pb-2">
                                 <div className="col-md-12 col-12">
                                     <Button className="w-100" 
@@ -119,15 +109,15 @@ const Share = ({ cert }) => {
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-sm-4 col-4 ">
+                                <div className="col-sm-4 col-12 ">
                                     <h4>{strings["Total Hours"]}</h4>
                                     <p>{cert && cert.specialty.duration_in_hours}{strings["Hours"]}</p>
                                 </div>
-                                <div className="col-md-4-12 col-4 ">
+                                <div className="col-sm-4 col-12 ">
                                     <h4>{strings["Issued On"]}</h4>
                                     <p>{cert && dayjs(cert.created_at).locale(query.lang || "en").format("DD MMMM YYYY")}</p>
                                 </div>
-                                <div className="col-sm-4d col-4 ">
+                                <div className="col-12 col-sm-4">
                                     <h4>{strings["Expired On"]}</h4>
                                     <p>{cert && cert.expires_at == null ? strings["Does not expire"] : dayjs(cert.expires_at).locale(query.lang || "en").format("DD MMMM YYYY")}</p>
                                 </div>
