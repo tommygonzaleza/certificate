@@ -4,6 +4,7 @@ import pdf from 'html-pdf';
 const componentToPDFBuffer = (component) => {
   return new Promise((resolve, reject) => {
     const html = renderToStaticMarkup(component);
+    const path = require('path');
     process.env.FONTCONFIG_PATH = path.join(process.cwd(), "fonts");
     process.env.LD_LIBRARY_PATH = path.join(process.cwd(), "bins"); 
 
