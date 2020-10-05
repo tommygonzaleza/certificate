@@ -7,7 +7,10 @@ const componentToPDFBuffer = (component) => {
     const path = require('path');
     process.env.FONTCONFIG_PATH = path.join(process.cwd(), "fonts");
     process.env.LD_LIBRARY_PATH = path.join(process.cwd(), "bins"); 
-
+    console.log(path.resolve(
+          process.cwd(),
+          'node_modules/phantomjs-prebuilt/lib/phantom/bin/phantomjs'
+        ))
     const options = {
       format: 'A4',
       orientation: 'landscape',
