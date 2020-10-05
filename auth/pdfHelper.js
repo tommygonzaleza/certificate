@@ -19,7 +19,7 @@ const componentToPDFBuffer = (component) => {
       timeout: 30000,
     };
 
-    const buffer = pdf.create(html, options).toBuffer((err, buffer) => {
+    pdf.create(html, options).toBuffer((err, buffer) => {
       if (err) {
         return reject(err);
         }
