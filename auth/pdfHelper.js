@@ -4,11 +4,17 @@ import pdf from 'html-pdf';
 const componentToPDFBuffer = (component) => {
   return new Promise((resolve, reject) => {
     const html = renderToStaticMarkup(component);
+    process.env.FONTCONFIG_PATH = path.join(process.cwd(), "fonts");
+    process.env.LD_LIBRARY_PATH = path.join(process.cwd(), "bins"); 
 
     const options = {
       format: 'A4',
       orientation: 'landscape',
       type: 'pdf',
+      phantomPath: path.resolve(
+          process.cwd(),
+          'node_modules/phantomjs-prebuilt/lib/phantom/bin/phantomjs'
+        ),
       timeout: 30000,
     };
 
