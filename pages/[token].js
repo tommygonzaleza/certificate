@@ -1,0 +1,168 @@
+import React, { useState, useEffect } from "react";
+import Button from "../components/ui/Button";
+import Icon from "../components/ui/Icon";
+import SLink from "../components/ui/Link";
+import * as dayjs from 'dayjs';
+import { useRouter } from 'next/router';
+import LanguageSwitcher from "../components/ui/LaguageSwitcher";
+import translations from "../auth/strings";
+import ModernCertificate from "../components/certificates/modern";
+import DefaultCertificate from "../components/certificates/default";
+import Link from "next/link";
+import Head from "next/head";
+import {Alert} from "react-bootstrap";
+
+const Share = ({ cert }) => {
+    const router = useRouter();
+    const { query } = router;
+    const [strings,setStrings] = useState(translations[query.lang || "en"]);
+    const [path, setPath] = useState("")
+    useEffect(() => {
+        setPath(window.location.href);
+    },[])
+    return (
+        <>
+        
+        {(query.token !== "" && !cert.status_code) ? <>
+            <Head>
+                <title>{"4Geeks Academy's Student cert"}</title>
+                <meta property="og:title" content={`${strings["Certificate of"]} ${cert.specialty.name} ${strings["to"]} ${cert.user.first_name} ${cert.user.last_name}`} />
+                <meta property="og:description" content={cert.specialty.description} />
+                <meta property="og:image" content={cert.preview_url}/>
+                <meta property="og:url" content={path} />
+                <meta name="twitter:title" content={`${strings["Certificate of"]} ${cert.specialty.name} ${strings["to"]} ${cert.user.first_name} ${cert.user.last_name}`} />
+                <meta name="twitter:description" content={cert.specialty.description} />
+                <meta name="twitter:image" content={cert.preview_url} />
+                <meta name="twitter:image:alt" content={`${strings["Certificate of"]} ${cert.specialty.name} ${strings["to"]} ${cert.user.first_name} ${cert.user.last_name}`} />
+                <meta name="twitter:site" content={cert.academy.twitter} />
+                <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
+                <link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&display=swap" rel="stylesheet" />
+            </Head>
+            <div className="container-fluid share">
+                <div className="row">
+                    <div className="col-12 bg-dark">
+                        {
+                            cert.layout === "modern" ? <ModernCertificate data={{
+                                ...cert,
+                                token: query.token,
+                                lang: query.lang || "en",
+                                strings: translations[query.lang || "en"],
+                                html: "html-body"
+                            }} /> : <DefaultCertificate data={{
+                                ...cert,
+                                token: query.LanguageSwitchertoken,
+                                lang: query.lang || "en",
+                                strings: translations[query.lang || "en"],
+                                html: "html-body"
+                            }}
+                                />}
+                    </div>
+                </div>
+                <div className="container">
+                    <div className="row pt-4 pb-4">
+                        <div className="col-md-4 col-12">
+                            <div className="row pb-2">
+                                <div className="col-12">
+                                    <Button className="w-100" 
+                                            icon="arrow" 
+                                            variant="primary" 
+                                            href={`https://www.linkedin.com/sharing/share-offsite/?url=${path}`} 
+                                            target={"_blank"}>
+                                        <img src="https://www.flaticon.es/svg/static/icons/svg/174/174857.svg" />
+                                        <Button.Label>{strings["Share on LinkedIn"]}</Button.Label>
+                                    </Button>
+                                </div>
+                            </div>
+                            <div className="row pb-2">
+                                <div className="col-12">
+                                    <Button className="w-100" icon="arrow" variant="primary" to={`/pdf/${query.token}`} target={"_blank"}>
+                                        <img src="https://www.flaticon.es/svg/static/icons/svg/617/617526.svg" />
+                                        <Button.Label >{strings["Download PDF"]}</Button.Label>
+                                    </Button>
+                                </div>
+                            </div>
+                            <div className="row pb-2">
+                                <div className="col-12">
+                                    <div className="card shadow-one mb-3 d-flex" >
+                                        <img src={cert.user.avatar_url || "https://www.flaticon.es/svg/static/icons/svg/74/74472.svg"} width="40px" height="40px" className="mr-3" />
+                                        <div>
+                                            <p>{cert && cert.user.first_name + " " + cert.user.last_name}</p>
+                                            <SLink href="/#" >{strings["view all certificates"]}</SLink>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-12">
+                                    <div className="card shadow-one mb-3" >
+                                        <div className="card-body">
+                                            <h5 className="card-title">{strings["Issuer"]}</h5>
+                                            <p>{cert && cert.academy.name}</p>
+                                            <SLink href={cert.academy.url || "https://4geeksacademy.co/"}>{strings["website"]}</SLink>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-md-8 col-12">
+                            <div className="row pb-4">
+                                <div className="col-md-12 col-12">
+                                    <div className="card shadow-one mb-3 d-flex bg-success" >
+                                        <Icon name="check-mark" size="lg" />
+                                        <div>
+                                            <p className="font-weight-bold">{strings["This certificate is valid."]}</p>
+                                            <p>{strings["and it does not expires"]}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="row pb-4">
+                                <div className="col-sm-12 col-12 ">
+                                    <h1>{strings["Full Stack Web Development"]}</h1>
+                                    <p>{strings["This document certifies that the student is a Full Stack Web Developer,with proficient knowlege to help in the creation of web applications using HTML/CSS,Javascript, React and REST API using SQL, Python and the Flask Framework"]}</p>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-sm-4 col-4 ">
+                                    <h4>{strings["Total Hours"]}</h4>
+                                    <p>{cert && cert.specialty.duration_in_hours}{strings["Hours"]}</p>
+                                </div>
+                                <div className="col-md-4-12 col-4 ">
+                                    <h4>{strings["Issued On"]}</h4>
+                                    <p>{cert && dayjs(cert.created_at).locale(query.lang || "en").format("DD MMMM YYYY")}</p>
+                                </div>
+                                <div className="col-sm-4d col-4 ">
+                                    <h4>{strings["Expired On"]}</h4>
+                                    <p>{cert && cert.expires_at == null ? strings["Does not expire"] : dayjs(cert.expires_at).locale(query.lang || "en").format("DD MMMM YYYY")}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <LanguageSwitcher 
+                translations={["es", "en"]} 
+                current={query.lang} 
+                onClick={(lang) => {
+                    router.push("/[token]?lang="+ lang, `/${query.token}?lang=${lang}`, { query: { lang: lang } })
+                    setStrings(translations[lang])
+                    }} />
+            </div>
+            </>: <div className="container">
+                <Alert variant={"danger"} className="shadow-one mt-4 d-flex">Ooops... Certificate not found or something went wrong , <SLink to={"/find"} >go to the find page.</SLink></Alert>
+            </div> }
+        </>
+    )
+}
+
+export async function getServerSideProps(context) {
+    const { token } = context.query
+    const res = await fetch(`${process.env.BC_HOST}/${token}`);
+    const cert = await res.json();
+    return {
+        props: {
+            cert
+        }
+    }
+}
+
+export default Share;
