@@ -29,7 +29,8 @@ export default async (req, res) => {
                     />}
             </PDFLayout>
         );
-        // with this header,the browser will open the pdf directly      
+        // with this header,the browser will open the pdf directly 
+        res.setHeader('Content-disposition', 'attachment; filename="article.pdf');     
         res.setHeader('Content-Type', 'application/pdf');
         // output the pdf buffer. once res.end is triggered, it won't trigger the render method
         res.end(buffer);
