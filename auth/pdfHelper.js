@@ -1,5 +1,6 @@
 import { renderToStaticMarkup } from 'react-dom/server';
 import pdf from 'html-pdf';
+import { tmpdir } from "os";
 
 const componentToPDFBuffer = (component) => {
   return new Promise((resolve, reject) => {
@@ -12,6 +13,7 @@ const componentToPDFBuffer = (component) => {
       format: 'A4',
       orientation: 'landscape',
       type: 'pdf',
+      directory: tmpdir(),
       phantomPath: path.resolve(
           process.cwd(),
           'node_modules/phantomjs-prebuilt/lib/phantom/bin/phantomjs'
