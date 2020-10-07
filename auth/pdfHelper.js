@@ -2,28 +2,36 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import pdf from 'html-pdf';
 import path from "path";
 
+const DIR = process.cwd()
 const componentToPDFBuffer = (component) => {
-    process.env.FONTCONFIG_PATH = path.join(process.cwd(), "fonts");
-    process.env.LD_LIBRARY_PATH = path.join(process.cwd(), "bins"); 
-  return new Promise((resolve, reject) => {
-    const html = renderToStaticMarkup(component);
-    const options = {
-      format: 'A4',
-      orientation: 'landscape',
-      type: 'pdf',
-      timeout: 30000,
-    };
-
-    pdf.create(html, options).toBuffer((err, buffer) => {
-      if (err) {
-        return reject(err);
-        }
-    
-        return resolve(buffer);
+    return new Promise((resolve, reject) => {
+        const html = renderToStaticMarkup(component);
+        const options = {
+            format: 'A4',
+            orientation: 'landscape',
+            type: 'pdf',
+            timeout: 30000,
+            phantomPath: path.resolve(
+                process.cwd(),
+                "node_modules/phantomjs-prebuilt/lib/phantom/bin/phantomjs"
+            )
+        };
+        
+        process.env.FONTCONFIG_PATH = path.join(DIR, "fonts");
+        process.env.LD_LIBRARY_PATH = path.join(DIR, "bins");
+        const result = pdf.create(html, options);
+        result.toBuffer((err, buffer) => {
+            if (err) {
+                console.log("ERROR Genering PDF: ", err)
+                return reject(err);
+            }
+            
+            console.log("SUCCESS Genering PDF")
+            return resolve(buffer);
+        });
     });
-  });
 }
 
 export default {
-  componentToPDFBuffer
+    componentToPDFBuffer
 }
