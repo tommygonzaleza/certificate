@@ -12,7 +12,7 @@ export const stylesDefault = {
     certificate:{
         fontSize:"36px", 
         fontWeight:300, 
-        fontFamily:"Lato, sans-serif",
+        fontFamily:"Lato-Regular, sans-serif",
         color:"white",
         margin:0,
         paddingTop:"10px"
@@ -20,7 +20,7 @@ export const stylesDefault = {
     program:{
         fontSize:"18px", 
         fontWeight:300, 
-        fontFamily:"Lato, sans-serif",
+        fontFamily:"Lato-Regular, sans-serif",
         color:"white",
         margin:0,
         marginBottom: "20px"

@@ -17,7 +17,7 @@ const componentToPDFBuffer = (component) => {
             )
         };
         
-        process.env.FONTCONFIG_PATH = path.join(DIR, "fonts");
+        process.env.FONTCONFIG_PATH = path.join(DIR, "static/fonts");
         process.env.LD_LIBRARY_PATH = path.join(DIR, "bins");
         const result = pdf.create(html, options);
         result.toBuffer((err, buffer) => {
