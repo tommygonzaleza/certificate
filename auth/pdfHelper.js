@@ -18,7 +18,6 @@ const componentToPDFBuffer = (component) => {
       if (err) {
         return reject(err);
         }
-    
         return resolve(buffer);
     });
   });
