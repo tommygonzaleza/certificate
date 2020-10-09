@@ -7,6 +7,7 @@ import {Alert} from "react-bootstrap";
 const Find = () => {
     const [token, setToken] = React.useState("");
     const [to, setTo] = React.useState("");
+    const [loading, setLoading] = React.useState(false);
     const [notify, setNotify] = React.useState({msg: "", type: ""});
     const [show, setShow] = React.useState(true);
 
@@ -17,7 +18,10 @@ const Find = () => {
         .then(data => {
             if(token.length < 1 || data.status_code === 404 ) {
             setNotify({msg:"Invalid Token or Certificate not found", type:"error"})
-            } else Router.push(`/${to}/${token}`)}
+            } else{
+                setLoading(true);
+                Router.push(`/${to}/${token}`)}
+            } 
         )
         .catch(err => err)
     }
@@ -30,12 +34,12 @@ const Find = () => {
             <div className="col-12">         
             <form  className="d-flex" onSubmit={(e) => onSubmit(e)}>
                 <Input type="text" required onChange={(e) => setToken(e.target.value)} placeholder="Certificate token" className="mr-1 ml-auto"/>
-                <Button className="mr-1" type="submit" onClick={() => setTo("pdf")}>Get certificate</Button>
-                <Button  type="submit" onClick={() => setTo("preview")} className="mr-auto">Get HTML</Button>
+                <Button disabled={loading} className="mr-1" type="submit" onClick={() => setTo("pdf")}>{ loading ? "Loading" : "Get certificate"}</Button>
+                <Button disabled={loading}  type="submit" onClick={() => setTo("preview")} className="mr-auto">{ loading ? "Loading" : "Get HTML"}</Button>
             </form>
             </div>
         </div>
-            {notify.type == "error" ? <Alert onClose={setTimeout(()=> setShow(false),3000)} show={show} variant={"danger"} className="shadow-one mt-4 alert-position">{notify.msg}</Alert> : ""}
+        {notify.type == "error" ? <Alert onClose={setTimeout(()=> setShow(false),3000)} show={show} variant={"danger"} className="shadow-one mt-4 alert-position">{notify.msg}</Alert> : ""}
     </div>
 }
 export default Find;
