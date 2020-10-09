@@ -3,14 +3,14 @@ import Button from "../components/ui/Button";
 import Icon from "../components/ui/Icon";
 import SLink from "../components/ui/Link";
 import * as dayjs from 'dayjs';
+import 'dayjs/locale/es';
 import { useRouter } from 'next/router';
 import LanguageSwitcher from "../components/ui/LaguageSwitcher";
 import translations from "../auth/strings";
-import ModernCertificate from "../components/certificates/modern";
-import DefaultCertificate from "../components/certificates/default";
 import Link from "next/link";
 import Head from "next/head";
 import {Alert} from "react-bootstrap";
+
 
 const Share = ({ cert }) => {
     const router = useRouter();
@@ -22,7 +22,6 @@ const Share = ({ cert }) => {
     },[])
     return (
         <>
-        
         {(query.token !== "" && !cert.status_code) ? <>
             <Head>
                 <title>{"4Geeks Academy's Student cert"}</title>
@@ -40,29 +39,15 @@ const Share = ({ cert }) => {
             </Head>
             <div className="container-fluid share">
                 <div className="row">
-                    <div className="col-12 bg-dark">
-                        {
-                            cert.layout === "modern" ? <ModernCertificate data={{
-                                ...cert,
-                                token: query.token,
-                                lang: query.lang || "en",
-                                strings: translations[query.lang || "en"],
-                                html: "html-body"
-                            }} /> : <DefaultCertificate data={{
-                                ...cert,
-                                token: query.LanguageSwitchertoken,
-                                lang: query.lang || "en",
-                                strings: translations[query.lang || "en"],
-                                html: "html-body"
-                            }}
-                                />}
+                    <div className="col-md-12 col-lg-12 col-12 bg-dark">
+                        <img src={cert.preview_url}alt="certificate img " className="certificate-preview img-fluid"/> 
                     </div>
                 </div>
                 <div className="container">
                     <div className="row pt-4 pb-4">
-                        <div className="col-md-4 col-12">
+                        <div className="col-md-auto">
                             <div className="row pb-2">
-                                <div className="col-12">
+                                <div className="col-md-12 col-12">
                                     <Button className="w-100" 
                                             icon="arrow" 
                                             variant="primary" 
@@ -74,7 +59,7 @@ const Share = ({ cert }) => {
                                 </div>
                             </div>
                             <div className="row pb-2">
-                                <div className="col-12">
+                                <div className="col-md-12 col-12">
                                     <Button className="w-100" icon="arrow" variant="primary" to={`/pdf/${query.token}`} target={"_blank"}>
                                         <img src="https://www.flaticon.es/svg/static/icons/svg/617/617526.svg" />
                                         <Button.Label >{strings["Download PDF"]}</Button.Label>
@@ -82,7 +67,7 @@ const Share = ({ cert }) => {
                                 </div>
                             </div>
                             <div className="row pb-2">
-                                <div className="col-12">
+                                <div className="col-md-12 col-12">
                                     <div className="card shadow-one mb-3 d-flex" >
                                         <img src={cert.user.avatar_url || "https://www.flaticon.es/svg/static/icons/svg/74/74472.svg"} width="40px" height="40px" className="mr-3" />
                                         <div>
@@ -93,7 +78,7 @@ const Share = ({ cert }) => {
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-12">
+                                <div className="col-md-12 col-12">
                                     <div className="card shadow-one mb-3" >
                                         <div className="card-body">
                                             <h5 className="card-title">{strings["Issuer"]}</h5>
@@ -123,15 +108,15 @@ const Share = ({ cert }) => {
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-sm-4 col-4 ">
+                                <div className="col-sm-4 col-12 ">
                                     <h4>{strings["Total Hours"]}</h4>
                                     <p>{cert && cert.specialty.duration_in_hours}{strings["Hours"]}</p>
                                 </div>
-                                <div className="col-md-4-12 col-4 ">
+                                <div className="col-sm-4 col-12 ">
                                     <h4>{strings["Issued On"]}</h4>
                                     <p>{cert && dayjs(cert.created_at).locale(query.lang || "en").format("DD MMMM YYYY")}</p>
                                 </div>
-                                <div className="col-sm-4d col-4 ">
+                                <div className="col-12 col-sm-4">
                                     <h4>{strings["Expired On"]}</h4>
                                     <p>{cert && cert.expires_at == null ? strings["Does not expire"] : dayjs(cert.expires_at).locale(query.lang || "en").format("DD MMMM YYYY")}</p>
                                 </div>
@@ -148,7 +133,7 @@ const Share = ({ cert }) => {
                     }} />
             </div>
             </>: <div className="container">
-                <Alert variant={"danger"} className="shadow-one mt-4 d-flex">Ooops... Certificate not found or something went wrong , <SLink to={"/find"} >go to the find page.</SLink></Alert>
+                <Alert variant={"danger"} className="shadow-one mt-4 d-flex">Ooops... Certificate not found or something went wrong , <SLink to={"/find"} > go to the find page.</SLink></Alert>
             </div> }
         </>
     )
