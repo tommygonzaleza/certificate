@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Head from "next/head";
 
 const PDFLayout = ({ children, lang, token }) => (
-    <>
         <html>
             <head>
                 <meta charSet="utf8" />
@@ -12,7 +11,6 @@ const PDFLayout = ({ children, lang, token }) => (
                 {children}
             </body>
         </html>
-    </>
 );
 
 PDFLayout.propTypes = {
