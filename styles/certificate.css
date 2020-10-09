@@ -3,10 +3,6 @@
     height: 100% !important;
 }
 
-@font-face{
-    font-family: "Lato";
-    src: url("./fonts/Lato.ttf");
-}
 
 #html-body{
     width: 1000px !important;

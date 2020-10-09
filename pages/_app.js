@@ -1,5 +1,5 @@
 import '../styles/globals.scss';
-import '../static/certificate.css';
+import '../styles/certificate.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../components/ui/Button/style.scss';
 import '../components/ui/Link/style.scss';

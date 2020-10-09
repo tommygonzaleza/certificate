@@ -12,7 +12,7 @@ export const stylesDefault = {
     certificate:{
         fontSize:"36px", 
         fontWeight:300, 
-        fontFamily:"Lato-Regular, sans-serif",
+        fontFamily:"Lato",
         color:"white",
         margin:0,
         paddingTop:"10px"
@@ -20,7 +20,7 @@ export const stylesDefault = {
     program:{
         fontSize:"18px", 
         fontWeight:300, 
-        fontFamily:"Lato-Regular, sans-serif",
+        fontFamily:"Lato",
         color:"white",
         margin:0,
         marginBottom: "20px"
@@ -28,7 +28,7 @@ export const stylesDefault = {
     fullStack:{
         fontSize:"21px", 
         fontWeight:700, 
-        fontFamily:"Lato, sans-serif",
+        fontFamily:"Lato",
         color:"white",
         margin:0,
     },
@@ -42,12 +42,12 @@ export const stylesDefault = {
     lastName:{
         fontSize:"36px", 
         fontWeight:300, 
-        fontFamily:"Lato, sans-serif"
+        fontFamily:"Lato"
     },
     firstName:{
         fontSize:"36px", 
         fontWeight:700, 
-        fontFamily:"Lato, sans-serif"
+        fontFamily:"Lato"
     },
     to:{
         position:"absolute", 
@@ -58,7 +58,7 @@ export const stylesDefault = {
     givenTo:{
         fontSize:"18px", 
         fontWeight:300, 
-        fontFamily:"Lato, sans-serif"
+        fontFamily:"Lato"
     },
     completion:{
         position:"absolute", 
@@ -69,7 +69,7 @@ export const stylesDefault = {
     completionDescription:{
         fontSize:"18px", 
         fontWeight:300, 
-        fontFamily:"Lato, sans-serif",
+        fontFamily:"Lato",
         margin:0
     },
     department:{
@@ -89,13 +89,13 @@ export const stylesDefault = {
     signedBy:{
         fontSize:"18px", 
         fontWeight:300, 
-        fontFamily:"Lato, sans-serif",
+        fontFamily:"Lato",
         margin:0,
     },
     role:{
         fontSize:"18px", 
         fontWeight:400, 
-        fontFamily:"Lato, sans-serif",
+        fontFamily:"Lato",
         margin:0,
         marginRight:"30px"
     },
@@ -132,21 +132,21 @@ export const stylesModern = {
     certificate:{
         fontSize:"18px", 
         fontWeight:300, 
-        fontFamily:"Lato, sans-serif",
+        fontFamily:"Lato",
         color:"white",
         margin:0,
     },
     program:{
         fontSize:"32px", 
         fontWeight:300, 
-        fontFamily:"Lato, sans-serif",
+        fontFamily:"Lato",
         color:"white",
         margin:0,
     },
     fullStack:{
         fontSize:"19px", 
         fontWeight:700, 
-        fontFamily:"Lato, sans-serif",
+        fontFamily:"Lato",
         color:"white",
         margin:0,
     },
@@ -160,12 +160,12 @@ export const stylesModern = {
     lastName:{
         fontSize:"36px", 
         fontWeight:300, 
-        fontFamily:"Lato, sans-serif"
+        fontFamily:"Lato"
     },
     firstName:{
         fontSize:"36px", 
         fontWeight:700, 
-        fontFamily:"Lato, sans-serif"
+        fontFamily:"Lato"
     },
     to:{
         position:"absolute", 
@@ -176,7 +176,7 @@ export const stylesModern = {
     givenTo:{
         fontSize:"18px", 
         fontWeight:300, 
-        fontFamily:"Lato, sans-serif"
+        fontFamily:"Lato"
     },
     completion:{
         position:"absolute", 
@@ -186,7 +186,7 @@ export const stylesModern = {
     completionDescription:{
         fontSize:"18px", 
         fontWeight:300, 
-        fontFamily:"Lato, sans-serif",
+        fontFamily:"Lato",
         margin:0
     },
     department:{
@@ -206,14 +206,14 @@ export const stylesModern = {
     signedBy:{
         fontSize:"18px", 
         fontWeight:300, 
-        fontFamily:"Lato, sans-serif",
+        fontFamily:"Lato",
         margin:0,
         marginLeft:"5px"
     },
     role:{
         fontSize:"18px", 
         fontWeight:400, 
-        fontFamily:"Lato, sans-serif",
+        fontFamily:"Lato",
         margin:0,
         marginRight:"35px"
     },
