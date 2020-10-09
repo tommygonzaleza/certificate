@@ -12,7 +12,7 @@ export const stylesDefault = {
     certificate:{
         fontSize:"36px", 
         fontWeight:300, 
-        fontFamily:"Lato",
+        fontFamily:"Lato, sans-serif",
         color:"white",
         margin:0,
         paddingTop:"10px"
@@ -20,7 +20,7 @@ export const stylesDefault = {
     program:{
         fontSize:"18px", 
         fontWeight:300, 
-        fontFamily:"Lato",
+        fontFamily:"Lato, sans-serif",
         color:"white",
         margin:0,
         marginBottom: "20px"
@@ -28,7 +28,7 @@ export const stylesDefault = {
     fullStack:{
         fontSize:"21px", 
         fontWeight:700, 
-        fontFamily:"Lato",
+        fontFamily:"Lato, sans-serif",
         color:"white",
         margin:0,
     },
@@ -42,12 +42,12 @@ export const stylesDefault = {
     lastName:{
         fontSize:"36px", 
         fontWeight:300, 
-        fontFamily:"Lato"
+        fontFamily:"Lato, sans-serif"
     },
     firstName:{
         fontSize:"36px", 
         fontWeight:700, 
-        fontFamily:"Lato"
+        fontFamily:"Lato, sans-serif"
     },
     to:{
         position:"absolute", 
@@ -58,7 +58,7 @@ export const stylesDefault = {
     givenTo:{
         fontSize:"18px", 
         fontWeight:300, 
-        fontFamily:"Lato"
+        fontFamily:"Lato, sans-serif"
     },
     completion:{
         position:"absolute", 
@@ -69,7 +69,7 @@ export const stylesDefault = {
     completionDescription:{
         fontSize:"18px", 
         fontWeight:300, 
-        fontFamily:"Lato",
+        fontFamily:"Lato, sans-serif",
         margin:0
     },
     department:{
@@ -89,19 +89,19 @@ export const stylesDefault = {
     signedBy:{
         fontSize:"18px", 
         fontWeight:300, 
-        fontFamily:"Lato",
+        fontFamily:"Lato, sans-serif",
         margin:0,
     },
     role:{
         fontSize:"18px", 
         fontWeight:400, 
-        fontFamily:"Lato",
+        fontFamily:"Lato, sans-serif",
         margin:0,
         marginRight:"30px"
     },
     sign:{
         fontSize:"30px",
-        fontFamily:"Mrs Saint Delafield, cursive",
+        fontFamily:"MrsSaint, cursive",
         margin:0,
     },
      verify:{
@@ -113,7 +113,7 @@ export const stylesDefault = {
     at:{
         fontSize:"9px", 
         fontWeight:300, 
-        fontFamily:"Lato, sans-serif",
+        fontFamily:"Lato, sans-serif, sans-serif",
         margin:0,
     }
 }
@@ -132,21 +132,21 @@ export const stylesModern = {
     certificate:{
         fontSize:"18px", 
         fontWeight:300, 
-        fontFamily:"Lato",
+        fontFamily:"Lato, sans-serif",
         color:"white",
         margin:0,
     },
     program:{
         fontSize:"32px", 
         fontWeight:300, 
-        fontFamily:"Lato",
+        fontFamily:"Lato, sans-serif",
         color:"white",
         margin:0,
     },
     fullStack:{
         fontSize:"19px", 
         fontWeight:700, 
-        fontFamily:"Lato",
+        fontFamily:"Lato, sans-serif",
         color:"white",
         margin:0,
     },
@@ -160,12 +160,12 @@ export const stylesModern = {
     lastName:{
         fontSize:"36px", 
         fontWeight:300, 
-        fontFamily:"Lato"
+        fontFamily:"Lato, sans-serif"
     },
     firstName:{
         fontSize:"36px", 
         fontWeight:700, 
-        fontFamily:"Lato"
+        fontFamily:"Lato, sans-serif"
     },
     to:{
         position:"absolute", 
@@ -176,7 +176,7 @@ export const stylesModern = {
     givenTo:{
         fontSize:"18px", 
         fontWeight:300, 
-        fontFamily:"Lato"
+        fontFamily:"Lato, sans-serif"
     },
     completion:{
         position:"absolute", 
@@ -186,7 +186,7 @@ export const stylesModern = {
     completionDescription:{
         fontSize:"18px", 
         fontWeight:300, 
-        fontFamily:"Lato",
+        fontFamily:"Lato, sans-serif",
         margin:0
     },
     department:{
@@ -206,20 +206,20 @@ export const stylesModern = {
     signedBy:{
         fontSize:"18px", 
         fontWeight:300, 
-        fontFamily:"Lato",
+        fontFamily:"Lato, sans-serif",
         margin:0,
         marginLeft:"5px"
     },
     role:{
         fontSize:"18px", 
         fontWeight:400, 
-        fontFamily:"Lato",
+        fontFamily:"Lato, sans-serif",
         margin:0,
         marginRight:"35px"
     },
     sign:{
         fontSize:"30px",
-        fontFamily:"Mrs Saint Delafield, cursive",
+        fontFamily:"MrsSaint, cursive",
         margin:0,
         marginRight:"-40px"
     },    
@@ -233,7 +233,7 @@ export const stylesModern = {
     at:{
         fontSize:"9px", 
         fontWeight:300, 
-        fontFamily:"Lato, sans-serif",
+        fontFamily:"Lato, sans-serif, sans-serif",
         margin:0,
     }
 }
