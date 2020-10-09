@@ -101,7 +101,7 @@ export const stylesDefault = {
     },
     sign:{
         fontSize:"30px",
-        fontFamily:"MrsSaint, cursive",
+        fontFamily:"MrsSaint",
         margin:0,
     },
      verify:{
@@ -113,7 +113,7 @@ export const stylesDefault = {
     at:{
         fontSize:"9px", 
         fontWeight:300, 
-        fontFamily:"Lato, sans-serif, sans-serif",
+        fontFamily:"Lato, sans-serif",
         margin:0,
     }
 }
@@ -219,7 +219,7 @@ export const stylesModern = {
     },
     sign:{
         fontSize:"30px",
-        fontFamily:"MrsSaint, cursive",
+        fontFamily:"MrsSaint",
         margin:0,
         marginRight:"-40px"
     },    
