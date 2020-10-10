@@ -15,8 +15,6 @@ const Pdf = () => {
           </>
 }
 
-const HOST = "https://breathecode.herokuapp.com/v1/certificate/token";
-
 export const getServerSideProps = async (context) => {
     const { res, query } = context;
     const token = query.token;
