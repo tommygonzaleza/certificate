@@ -82,9 +82,9 @@ export const stylesDefault = {
     signature:{
         position:"absolute", 
         top:"80%", 
-        right:"14%",
+        right:"-29%",
         width:"100%", 
-        textAlign:"right"
+        textAlign:"center"
     },
     signedBy:{
         fontSize:"18px", 
@@ -97,7 +97,6 @@ export const stylesDefault = {
         fontWeight:400, 
         fontFamily:"Lato, sans-serif",
         margin:0,
-        marginRight:"30px"
     },
     sign:{
         fontSize:"30px",
