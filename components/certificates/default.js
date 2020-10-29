@@ -1,5 +1,6 @@
 import { stylesDefault } from "../../auth/pdfStyles";
 import * as dayjs from 'dayjs';
+import 'dayjs/locale/es';
 
 const Certificate = ({data}) => {
     return (
