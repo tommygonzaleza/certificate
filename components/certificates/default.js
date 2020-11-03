@@ -201,9 +201,6 @@ const Certificate = ({data}) => {
                         <stop offset="0.66129" stopColor="#BCBDBD" />
                         <stop offset="1" stopColor="#8F9295" />
                     </linearGradient>
-                    <clipPath id="clip0">
-                        <rect width="842" height="595" fill="white" />
-                    </clipPath>
                 </defs>
             </svg>
         </div>
