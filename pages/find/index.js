@@ -31,7 +31,7 @@ const Find = () => {
             <div className="col-12">
                 <h1>Looking for a certificate?</h1>
             </div>
-            <div className="col-12">         
+            <div className="col-12">       
             <form  className="d-flex" onSubmit={(e) => onSubmit(e)}>
                 <Input type="text" required onChange={(e) => setToken(e.target.value)} placeholder="Certificate token" className="mr-1 ml-auto"/>
                 <Button disabled={loading} className="mr-1" type="submit" onClick={() => setTo("pdf")}>{ loading ? "Loading" : "Get certificate"}</Button>
