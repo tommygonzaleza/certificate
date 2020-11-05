@@ -127,7 +127,7 @@ const Share = ({ cert }) => {
                 </div>
                 <LanguageSwitcher 
                 translations={["es", "en"]} 
-                current={query.lang} 
+                current={query.lang || "en"} 
                 onClick={(lang) => {
                     router.push("/[token]?lang="+ lang, `/${query.token}?lang=${lang}`, { query: { lang: lang } })
                     setStrings(translations[lang])
