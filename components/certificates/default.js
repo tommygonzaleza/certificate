@@ -4,7 +4,7 @@ import 'dayjs/locale/es';
 
 const Certificate = ({ data }) => {
     return (
-        <div style={stylesDefault.body} id={data.html} className="body">
+        <div style={stylesDefault.body} id={data.html}>
             <div id="header" style={stylesDefault.header}>
                 <p style={stylesDefault.certificate}>{data.strings["Certificate"].toUpperCase()}</p>
                 <p style={stylesDefault.program}>{data.strings["Program"].toUpperCase()}</p>
