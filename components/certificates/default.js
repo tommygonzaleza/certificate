@@ -37,7 +37,7 @@ const Certificate = ({ data }) => {
             <div id="verify" style={stylesDefault.verify}>
                 <span style={stylesDefault.at}>Verify this certificate at https://certificate.breatheco.de/{data.token}</span>
             </div>
-            <img src="https://drive.google.com/uc?export=view&id=1BUh068EZklAoKfWRkVPO0kNrYcT1_lMK" style={{width:"100%"}}/>
+            <img src={data.layout.background_url || "https://drive.google.com/uc?export=view&id=1BUh068EZklAoKfWRkVPO0kNrYcT1_lMK"} style={{width:"100%"}}/>
         </div>
     );
 }
