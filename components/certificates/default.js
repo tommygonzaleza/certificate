@@ -5,8 +5,8 @@ import 'dayjs/locale/es';
 const Certificate = ({ data }) => {
     const setBackground = () =>{
         const {layout} = data;
-        if(layout !== undefined && layout.background_url !== null) return "https://drive.google.com/uc?export=view&id=1BUh068EZklAoKfWRkVPO0kNrYcT1_lMK"
-        else return layout.background_url
+        if(layout.background_url === undefined || layout.background_url === null) return "https://drive.google.com/uc?export=view&id=18gl9dv57tcuCpYcyyVjnCdOUuSVIparf"
+        else return  layout.background_url
     }
     return (
         <div style={stylesDefault.body} id={data.html}>
