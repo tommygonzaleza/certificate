@@ -3,6 +3,11 @@ import * as dayjs from 'dayjs';
 import 'dayjs/locale/es';
 
 const Certificate = ({data}) => {
+    const setBackground = () =>{
+        const {layout} = data;
+        if(layout !== undefined && layout.background_url !== null) return "https://drive.google.com/uc?export=view&id=18gl9dv57tcuCpYcyyVjnCdOUuSVIparf"
+        else return layout.background_url
+    }
     return (
         <div style={stylesModern.body} id={data.html}>
             <div id="header" style={stylesModern.header}>
@@ -37,7 +42,7 @@ const Certificate = ({data}) => {
             <div id="verify" style={stylesModern.verify}> 
                 <span style={stylesModern.at}>Verify this certificate at https://certificate.breatheco.de/{data.token}</span>
             </div>
-            <img src={data.layout.background_url || "https://drive.google.com/uc?export=view&id=18gl9dv57tcuCpYcyyVjnCdOUuSVIparf"} style={{width:"100%"}}/>
+            <img src={setBackground()} style={{width:"100%"}}/>
         </div>
     );
 }
