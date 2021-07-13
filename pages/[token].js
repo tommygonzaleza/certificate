@@ -105,7 +105,7 @@ const Share = ({ cert }) => {
                             <div className="row pb-4">
                                 <div className="col-sm-12 col-12 ">
                                     <h1>{strings["Full Stack Web Development"]}</h1>
-                                    <p>{strings["This document certifies that the student is a Full Stack Web Developer,with proficient knowlege to help in the creation of web applications using HTML/CSS,Javascript, React and REST API using SQL, Python and the Flask Framework"]}</p>
+                                    <p>{cert.specialty.description}</p>
                                 </div>
                             </div>
                             <div className="row">
