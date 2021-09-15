@@ -24,7 +24,7 @@ const Certificate = ({data}) => {
             </div>
             <div id="completion" style={stylesModern.completion}>
                 <p style={stylesModern.completionDescription}>{data.strings["Has successfully completed the Full Stack Development program"]}</p>
-                <p style={stylesModern.completionDescription}>{data.cohort.syllabus.certificate.duration_in_hours} {data.strings["Hours"]}</p>
+                <p style={stylesModern.completionDescription}>{data.cohort.syllabus_version.duration_in_hours} {data.strings["Hours"]}</p>
                 <p style={stylesModern.completionDescription}>{data.academy.name}</p>
                 <p style={stylesModern.completionDescription}>{dayjs(data.created_at).locale(data.lang || "en").format("DD MMMM YYYY")}</p>
             </div>
@@ -39,7 +39,7 @@ const Certificate = ({data}) => {
                 <p style={stylesModern.signedBy}>{data.signed_by}</p>
                 <p style={stylesModern.role}>{data.signed_by_role}</p>
             </div>
-            <div id="verify" style={stylesModern.verify}> 
+            <div id="verify" style={stylesModern.verify}>
                 <span style={stylesModern.at}>Verify this certificate at https://certificate.breatheco.de/{data.token}</span>
             </div>
             <img src={setBackground()} style={{width:"100%"}}/>
