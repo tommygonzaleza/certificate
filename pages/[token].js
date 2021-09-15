@@ -111,7 +111,7 @@ const Share = ({ cert }) => {
                             <div className="row">
                                 <div className="col-sm-4 col-12 ">
                                     <h4>{strings["Total Hours"]}</h4>
-                                    <p>{cert && cert.cohort.syllabus.certificate.duration_in_hours}{strings["Hours"]}</p>
+                                    <p>{cert && cert.cohort.syllabus_version.duration_in_hours}{strings["Hours"]}</p>
                                 </div>
                                 <div className="col-sm-4 col-12 ">
                                     <h4>{strings["Issued On"]}</h4>
