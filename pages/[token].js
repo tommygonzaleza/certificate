@@ -22,7 +22,7 @@ const Share = ({ cert }) => {
     },[])
     return (
         <>
-        
+
         {(query.token !== "" && !cert.status_code) ? <>
             <Head>
                 <title>{"4Geeks Academy's Student cert"}</title>
@@ -41,7 +41,7 @@ const Share = ({ cert }) => {
             <div className="container-fluid share">
                 <div className="row">
                     <div className="col-md-12 col-lg-12 col-12 bg-dark">
-                        <img src={cert.preview_url}alt="certificate img " className="certificate-preview img-fluid"/> 
+                        <img src={cert.preview_url}alt="certificate img " className="certificate-preview img-fluid"/>
                     </div>
                 </div>
                 <div className="container">
@@ -49,10 +49,10 @@ const Share = ({ cert }) => {
                         <div className="col-md-auto">
                             <div className="row pb-2">
                                 <div className="col-md-12 col-12">
-                                    <Button className="w-100" 
-                                            icon="arrow" 
-                                            variant="primary" 
-                                            href={`https://www.linkedin.com/sharing/share-offsite/?url=${path}`} 
+                                    <Button className="w-100"
+                                            icon="arrow"
+                                            variant="primary"
+                                            href={`https://www.linkedin.com/sharing/share-offsite/?url=${path}`}
                                             target={"_blank"}>
                                         <img src="https://www.flaticon.es/svg/static/icons/svg/174/174857.svg" />
                                         <Button.Label>{strings["Share on LinkedIn"]}</Button.Label>
@@ -125,9 +125,9 @@ const Share = ({ cert }) => {
                         </div>
                     </div>
                 </div>
-                <LanguageSwitcher 
-                translations={["es", "en"]} 
-                current={query.lang || "en"} 
+                <LanguageSwitcher
+                translations={["es", "en"]}
+                current={query.lang || "en"}
                 onClick={(lang) => {
                     router.push("/[token]?lang="+ lang, `/${query.token}?lang=${lang}`, { query: { lang: lang } })
                     setStrings(translations[lang])
@@ -142,7 +142,7 @@ const Share = ({ cert }) => {
 
 export async function getServerSideProps(context) {
     const { token } = context.query
-    const res = await fetch(`${process.env.BC_HOST}/${token}`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BC_HOST}/${token}`);
     const cert = await res.json();
     return {
         props: {

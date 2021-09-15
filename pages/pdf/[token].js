@@ -18,7 +18,7 @@ const Pdf = () => {
 export const getServerSideProps = async (context) => {
     const { res, query } = context;
     const token = query.token;
-    const response = await fetch(`${process.env.BC_HOST}/${token}`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BC_HOST}/${token}`);
     const data = await response.json();
     if (token !== "" && !data.status_code) {
         try{
@@ -41,7 +41,7 @@ export const getServerSideProps = async (context) => {
             );
             // const buffer = await pdfHelper.componentToPDFBuffer(<PDFLayout lang={query.lang} token={token}><h1>Hello</h1></PDFLayout>);
 
-            // with this header,the browser will open the pdf directly      
+            // with this header,the browser will open the pdf directly
             res.setHeader('Content-Type', 'application/pdf');
             // output the pdf buffer. once res.end is triggered, it won't trigger the render method
             res.end(buffer);

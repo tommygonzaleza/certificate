@@ -13,7 +13,7 @@ const Find = () => {
 
     const onSubmit = (e) =>{
         e.preventDefault();
-        fetch(`${process.env.BC_HOST}/${token}`)
+        fetch(`${process.env.NEXT_PUBLIC_BC_HOST}/${token}`)
         .then(res =>  res.json())
         .then(data => {
             if(token.length < 1 || data.status_code === 404 ) {
@@ -21,7 +21,7 @@ const Find = () => {
             } else{
                 setLoading(true);
                 Router.push(`/${to}/${token}`)}
-            } 
+            }
         )
         .catch(err => err)
     }
@@ -31,7 +31,7 @@ const Find = () => {
             <div className="col-12">
                 <h1>Looking for a certificate?</h1>
             </div>
-            <div className="col-12">       
+            <div className="col-12">
             <form  className="d-flex" onSubmit={(e) => onSubmit(e)}>
                 <Input type="text" required onChange={(e) => setToken(e.target.value)} placeholder="Certificate token" className="mr-1 ml-auto"/>
                 <Button disabled={loading} className="mr-1" type="submit" onClick={() => setTo("pdf")}>{ loading ? "Loading" : "Get certificate"}</Button>

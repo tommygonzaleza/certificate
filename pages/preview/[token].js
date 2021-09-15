@@ -12,7 +12,7 @@ const Preview = ({ data, query, token }) => {
     return (
         <>{
            !data ? <Spinner animation="border" /> :
-           token !== "" && !data.status_code ? 
+           token !== "" && !data.status_code ?
         (
         <>
         <Head>
@@ -36,7 +36,7 @@ const Preview = ({ data, query, token }) => {
         />}</>):
             <div className="container">
                 <Alert variant={"danger"} className="shadow-one mt-4 d-flex">Ooops... Certificate not found or something went wrong , <Link to={"/find"} >go to the find page.</Link></Alert>
-            </div> 
+            </div>
         }
         </>
     );
@@ -44,7 +44,7 @@ const Preview = ({ data, query, token }) => {
 
 export async function getServerSideProps(context) {
     const { token } = context.query
-    const res = await fetch(`${process.env.BC_HOST}/${token}`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BC_HOST}/${token}`);
     const data = await res.json();
     return {
         props: {
