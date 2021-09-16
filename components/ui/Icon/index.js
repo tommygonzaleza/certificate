@@ -5,6 +5,8 @@ import { IoLogoGithub } from "react-icons/io"
 import { FcCollaboration, FcHome, FcGraduationCap, FcSettings, FcBriefcase, FcButtingIn, FcCheckmark } from "react-icons/fc";
 import { FiArrowRightCircle } from "react-icons/fi";
 import { BsArrowRight,BsArrowDown } from "react-icons/bs";
+import { FaLinkedin, FaFilePdf } from "react-icons/fa";
+import {BsFillPersonFill} from "react-icons/bs"
 export const icons = {
     'github': IoLogoGithub,
     'collaboration': FcCollaboration,
@@ -16,14 +18,17 @@ export const icons = {
     'arrow-right': FiArrowRightCircle,
     'arrow': BsArrowRight,
     'check-mark': FcCheckmark,
-    "arrow-down": BsArrowDown
+    "arrow-down": BsArrowDown,
+    "linked-in":FaLinkedin,
+    "pdf": FaFilePdf,
+    "avatar":BsFillPersonFill,
 }
 export const sizes = {
     xs: '90%',
-    md: '130%',
+    md: '150%',
     lg: '200%'
 }
-const Icon = ({ name, size, color, ...rest }) => {
+const Icon = ({ name, size, color,style, ...rest }) => {
 
     //only the specific icons
     if(icons[name] === undefined) return "?";
@@ -31,7 +36,7 @@ const Icon = ({ name, size, color, ...rest }) => {
     const TheIcon = icons[name]
     return <IconContext.Provider value={{ color, className: "icon" }}>
     <>
-        <TheIcon {...rest} style={{ fontSize: sizes[size] }}  />
+        <TheIcon {...rest} style={{ fontSize: sizes[size], ...style }}  />
     </>
     </IconContext.Provider>
 }
