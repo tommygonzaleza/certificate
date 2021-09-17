@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Button from "../components/ui/Button";
-import Icon from "../components/ui/Icon";
 import SLink from "../components/ui/Link";
 import * as dayjs from 'dayjs';
 import 'dayjs/locale/es';
 import { useRouter } from 'next/router';
 import LanguageSwitcher from "../components/ui/LaguageSwitcher";
 import translations from "../auth/strings";
-import Link from "next/link";
 import Head from "next/head";
 import {Alert} from "react-bootstrap";
+import Icon from "../components/ui/Icon";
 
 
 const Share = ({ cert }) => {
@@ -54,7 +53,7 @@ const Share = ({ cert }) => {
                                             variant="primary"
                                             href={`https://www.linkedin.com/sharing/share-offsite/?url=${path}`}
                                             target={"_blank"}>
-                                        <img src="https://www.flaticon.es/svg/static/icons/svg/174/174857.svg" />
+                                        <Icon name="linked-in" size="md" />
                                         <Button.Label>{strings["Share on LinkedIn"]}</Button.Label>
                                     </Button>
                                 </div>
@@ -62,7 +61,7 @@ const Share = ({ cert }) => {
                             <div className="row pb-2">
                                 <div className="col-md-12 col-12">
                                     <Button className="w-100" icon="arrow" variant="primary" to={`/pdf/${query.token}`} target={"_blank"}>
-                                        <img src="https://www.flaticon.es/svg/static/icons/svg/617/617526.svg" />
+                                        <Icon name="pdf" size="md" style={{float: "unset"}}/>
                                         <Button.Label >{strings["Download PDF"]}</Button.Label>
                                     </Button>
                                 </div>
@@ -70,7 +69,7 @@ const Share = ({ cert }) => {
                             <div className="row pb-2">
                                 <div className="col-md-12 col-12">
                                     <div className="card shadow-one mb-3 d-flex" >
-                                        <img src={cert.user.avatar_url || "https://www.flaticon.es/svg/static/icons/svg/74/74472.svg"} width="40px" height="40px" className="mr-3" />
+                                        {cert.user.avatar_url ? <img src={cert.user.avatar_url} width="40px" height="40px" className="mr-3" /> : <Icon name="avatar" size="lg" color="black"/>}
                                         <div>
                                             <p>{cert && cert.user.first_name + " " + cert.user.last_name}</p>
                                             <SLink href="/#" >{strings["view all certificates"]}</SLink>
