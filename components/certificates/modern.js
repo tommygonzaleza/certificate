@@ -26,7 +26,7 @@ const Certificate = ({data}) => {
                 <p style={stylesModern.completionDescription}>{data.strings["Has successfully completed the Full Stack Development program"]}</p>
                 <p style={stylesModern.completionDescription}>{data.cohort.syllabus_version.duration_in_hours} {data.strings["Hours"]}</p>
                 <p style={stylesModern.completionDescription}>{data.academy.name}</p>
-                <p style={stylesModern.completionDescription}>{dayjs(data.created_at).locale(data.lang || "en").format("DD MMMM YYYY")}</p>
+                <p style={stylesModern.completionDescription}>{dayjs(data.issued_at || data.created_at).locale(data.lang || "en").format("DD MMMM YYYY")}</p>
             </div>
             <div id="department" style={stylesModern.department}>
                 <img alt="florida department of education logo"

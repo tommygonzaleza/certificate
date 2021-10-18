@@ -8,6 +8,7 @@ const Certificate = ({ data }) => {
         if(layout.background_url === undefined || layout.background_url === null) return "https://drive.google.com/uc?export=view&id=18gl9dv57tcuCpYcyyVjnCdOUuSVIparf"
         else return  layout.background_url
     }
+    console.log(data)
     return (
         <div style={stylesDefault.body} id={data.html}>
             <div id="header" style={stylesDefault.header}>
@@ -26,7 +27,7 @@ const Certificate = ({ data }) => {
                 <p style={stylesDefault.completionDescription}>{data.strings["Has successfully completed the Full Stack Development program"]}</p>
                 <p style={stylesDefault.completionDescription}>{data.cohort.syllabus_version.duration_in_hours} {data.strings["Hours"]}</p>
                 <p style={stylesDefault.completionDescription}>{data.academy.name}</p>
-                <p style={stylesDefault.completionDescription}>{dayjs(data.created_at).locale(data.lang || "en").format("DD MMMM YYYY")}</p>
+                <p style={stylesDefault.completionDescription}>{dayjs(data.issued_at || data.created_at ).locale(data.lang || "en").format("DD MMMM YYYY")}</p>
             </div>
             <div id="department" style={stylesDefault.department}>
                 <img alt="florida department of education logo"
