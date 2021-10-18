@@ -8,7 +8,6 @@ const Certificate = ({ data }) => {
         if(layout.background_url === undefined || layout.background_url === null) return "https://drive.google.com/uc?export=view&id=18gl9dv57tcuCpYcyyVjnCdOUuSVIparf"
         else return  layout.background_url
     }
-    console.log(data)
     return (
         <div style={stylesDefault.body} id={data.html}>
             <div id="header" style={stylesDefault.header}>
