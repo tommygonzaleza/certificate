@@ -103,7 +103,7 @@ const Share = ({ cert }) => {
                             </div>
                             <div className="row pb-4">
                                 <div className="col-sm-12 col-12 ">
-                                    <h1>{strings["Full Stack Web Development"]}</h1>
+                                    <h1>{cert.specialty.name || strings["Full Stack Web Development"]}</h1>
                                     <p>{cert.specialty.description}</p>
                                 </div>
                             </div>
