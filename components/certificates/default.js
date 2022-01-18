@@ -13,7 +13,7 @@ const Certificate = ({ data }) => {
             <div id="header" style={stylesDefault.header}>
                 <p style={stylesDefault.certificate}>{data.strings["Certificate"].toUpperCase()}</p>
                 <p style={stylesDefault.program}>{data.strings["Program"].toUpperCase()}</p>
-                <p style={stylesDefault.fullStack}>{"</"}{data.strings["Full Stack Software Development"].toUpperCase()}{">"}</p>
+                <p style={stylesDefault.fullStack}>{"</"}{data.specialty.name.toUpperCase() || data.strings["Full Stack Software Development"].toUpperCase()}{">"}</p>
             </div>
             <div id="to" style={stylesDefault.to}>
                 <span style={stylesDefault.givenTo}>{data.strings["Recognizes that"]}:</span>
@@ -23,8 +23,8 @@ const Certificate = ({ data }) => {
                 <span style={stylesDefault.lastName}> {data.user.last_name}{">"}</span>
             </div>
             <div id="completion" style={stylesDefault.completion}>
-                <p style={stylesDefault.completionDescription}>{data.strings["Has successfully completed the Full Stack Development program"]}</p>
-                <p style={stylesDefault.completionDescription}>{data.cohort.syllabus_version.duration_in_hours} {data.strings["Hours"]}</p>
+                <p style={stylesDefault.completionDescription}>{data.strings["Has successfully completed"] + " " + data.specialty.name.toUpperCase()}</p>
+                <p style={stylesDefault.completionDescription}>{data.cohort.syllabus_version.duration_in_hours} {data.strings["Hours"] || "?"}</p>
                 <p style={stylesDefault.completionDescription}>{data.academy.name}</p>
                 <p style={stylesDefault.completionDescription}>{dayjs(data.issued_at || data.cohort.ending_date).locale(data.lang || "en").format("DD MMMM YYYY")}</p>
             </div>
