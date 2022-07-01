@@ -19,8 +19,8 @@ const Certificate = ({ data }) => {
                 <span style={stylesDefault.givenTo}>{data.strings["Recognizes that"]}:</span>
             </div>
             <div id="name" style={stylesDefault.name} >
-                <span style={stylesDefault.firstName}>{"</"}{data.user.first_name}</span>
-                <span style={stylesDefault.lastName}> {data.user.last_name}{">"}</span>
+                <span style={stylesDefault.firstName}>{"</"}{data.profile_academy.first_name}</span>
+                <span style={stylesDefault.lastName}> {data.profile_academy.last_name}{">"}</span>
             </div>
             <div id="completion" style={stylesDefault.completion}>
                 <p style={stylesDefault.completionDescription}>{data.strings["Has successfully completed"] + " " + data.specialty.name.toUpperCase()}</p>
