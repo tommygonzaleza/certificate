@@ -40,7 +40,7 @@ const Certificate = ({ data }) => {
                 <p style={stylesDefault.role}>{data.signed_by_role}</p>
             </div>
             <div id="verify" style={stylesDefault.verify}>
-                <span style={stylesDefault.at}>{data.layout?.foot_note ? `${data.layout.foot_note}.` : ''} Verify this certificate at https://certificate.breatheco.de/{data.token}</span>
+                <span style={stylesDefault.at}>{data.layout?.foot_note ? `${data.layout.foot_note}` : ''} Verify this certificate at https://certificate.breatheco.de/{data.token}</span>
             </div>
             <img src={setBackground()} style={{width:"100%"}}/>
         </div>
