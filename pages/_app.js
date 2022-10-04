@@ -1,8 +1,8 @@
-import '../styles/globals.scss';
+import '../styles/globals.css';
 import '../styles/certificate.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import '../components/ui/Button/style.scss';
-import '../components/ui/Link/style.scss';
+import '../components/ui/Button/style.css';
+import '../components/ui/Link/style.css';
 import '../components/ui/LaguageSwitcher/style.css';
 function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />

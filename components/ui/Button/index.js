@@ -1,7 +1,6 @@
 import React from "react"
 import { Button } from "react-bootstrap";
 import Icon from "../Icon/index";
-//import './style.scss';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 
