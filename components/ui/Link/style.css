@@ -1,0 +1,16 @@
+.smart-link {
+    text-align: left;
+}
+.smart-link i, .smart-link svg {
+    margin-left: 10px;
+    margin-right: 5px;
+}
+.smart-link a {
+    text-decoration: none;
+    background-color: transparent;
+    width: 100%;
+}
+.smart-link a:hover {
+    cursor: pointer;
+    text-decoration: underline !important;
+}
